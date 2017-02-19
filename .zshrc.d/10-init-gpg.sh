@@ -1,0 +1,3 @@
+GPG_TTY=$(tty)
+GPGKEY=8C4854C3
+export GPGKEY GPG_TTY

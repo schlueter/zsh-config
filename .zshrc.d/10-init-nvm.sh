@@ -1,0 +1,1 @@
+/home/bschlueter/workspace/public/nvm/nvm.sh
