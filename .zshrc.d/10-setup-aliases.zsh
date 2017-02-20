@@ -111,7 +111,7 @@ alias gppr='git push && git pull-request'
 alias gw='git browse'
 
 # Random aliases
-alias .z='TASKS=1 source ~/.zshrc'
+alias .z='TASKS=1 source "${ZDOTDIR}"/.zshrc'
 alias agrep='alias | grep'
 alias allow='sudo xattr -d -r com.apple.quarantine'
 alias c='clear'
