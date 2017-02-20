@@ -1,6 +1,6 @@
 # Schlueter's zsh-config
 
-This is my latest attempt at a config management system which is both easy to install and neglectibly easy to update.
+This is my latest attempt at a config management system for my home directory which is both easy to install and neglectibly easy to update.
 
 ## Installation
 
