@@ -1,5 +1,5 @@
-.zcompdump*
-.zhistory
+*.zwc
 *secret*
 .zcompcache
-*.zwc
+.zcompdump*
+.zhistory
