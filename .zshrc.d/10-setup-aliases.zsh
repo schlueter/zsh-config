@@ -31,6 +31,7 @@ alias gbr='git   branch -r --no-merged'
 alias gbm='git   branch -r --merged'
 alias gdl=git_delete_branch_local_and_origin
 alias gdl!=git_force_delete_branch_local_and_origin
+alias gdra='gb -r --merged | awk "!/master/{sub(\"origin/\", \"\", $1); print $0}" | xargs -n1 -I{} git push origin :{}'
 ## checkout
 alias gco='git  checkout'
 alias gcb='git  checkout -b'
@@ -68,10 +69,7 @@ alias gdt='git  diff-tree --no-commit-id --name-only -r'
 alias gf='git  fetch'
 alias gfa='git fetch --all --prune'
 ## log
-alias ghi="git log --graph --decorate=short --date=short --pretty=format:\
-'%C(yellow)%h%C(reset) %C(red)%d%C(reset)
-%C(blue)%ad%C(reset) %C(green)%an%C(reset)
-%s'" \
+alias ghi="git log --graph --decorate=short --date=short --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)'"
 ## pull
 alias gl='git  pull'
 alias glu='git pull origin $(gpbb)'
