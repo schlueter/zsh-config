@@ -1,4 +1,4 @@
-for f in "${ZDOTDIR}"/.zshrc.d/*
+for f in "${ZDOTDIR}"/zshrc.d/*
 do
     source $f
 done
