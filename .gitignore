@@ -1,3 +1,5 @@
 .zcompdump*
 .zhistory
-.zshrc.d/secrets
+*secret*
+.zcompcache
+*.zwc
