@@ -1,1 +1,1 @@
-/home/bschlueter/workspace/public/nvm/nvm.sh
+../../../workspace/public/nvm/nvm.sh
