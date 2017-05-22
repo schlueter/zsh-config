@@ -21,8 +21,9 @@ LESSOPEN='|lesspreprocess %s'
 PYTHONSTARTUP=~/.pythonrc
 NVM_DIR="$HOME/.nvm"
 PYENV_ROOT="$HOME/.pyenv"
+RBENV_ROOT="$HOME/.rbenv"
 
-path=("$HOME/bin" "$HOME/.local/bin"  "$PYENV_ROOT/bin" $path)
+path=("$HOME/bin" "$HOME/.local/bin" "$PYENV_ROOT/bin" "$RBENV_ROOT/bin" $path)
 
 export CLASSPATH \
        EDITOR \

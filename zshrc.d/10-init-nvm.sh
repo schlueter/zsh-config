@@ -1,1 +1,1 @@
-../../../workspace/public/nvm/nvm.sh
+../nvm/nvm.sh

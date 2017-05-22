@@ -1,3 +1,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = git@github.com:schlueter/prezto
+[submodule "nvm"]
+	path = nvm
+	url = https://github.com/creationix/nvm.git
