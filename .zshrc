@@ -7,4 +7,5 @@ function main() {
 }
 
 main
+source "$ZDOTDIR/.zprezto/init.zsh"
 typeset -gU cdpath fpath mailpath path
