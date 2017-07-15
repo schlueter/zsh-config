@@ -6,6 +6,6 @@ function main() {
     done
 }
 
-main
 source "$ZDOTDIR/.zprezto/init.zsh"
+main
 typeset -gU cdpath fpath mailpath path
