@@ -2,6 +2,10 @@
 alias ta='tmux attach'
 alias tada='tmux attach -D'
 
+# Keychain
+alias opensesame='eval $(keychain --eval --agents gpg,ssh id_ed25519 8C4854C3 --quiet)'
+alias 1001=opensesame
+
 # Vagrant
 alias vb='vagrant box'
 alias vd='vagrant destroy'
