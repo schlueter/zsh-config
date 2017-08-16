@@ -87,7 +87,6 @@ alias grbi='git              rebase --interactive'
 alias grbs='git              rebase --skip'
 alias grbu='git fetch && git rebase origin/$(git_primary_branch_base)'
 ## reset
-alias gre='git  reset'
 alias grh='git  reset HEAD'
 alias grhh='git reset HEAD --hard'
 ## rm
@@ -101,6 +100,8 @@ alias gt='git  stash'
 alias gtd='git stash drop'
 alias gtp='git stash pop'
 alias gts='git stash show'
+## misc
+alias gre=git_recent_branches
 
 ## Hub aliases
 alias gpr='git pull-request'
@@ -199,9 +200,14 @@ colors () {
     done
 }
 
+git_recent_branches () {
+  git reflog | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1 \2/p' | xargs -n 2 printf "%-$((COLUMNS/2-10))s %$((COLUMNS/2-10))s\n"
+}
+
 agent () {
     eval `ssh-agent -s`
     ssh-add
 }
 
 alias | grep gpa &>/dev/null && unalias gpa
+
