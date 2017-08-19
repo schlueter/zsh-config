@@ -1,3 +1,6 @@
+# Haskell
+alias edot='dot -Tpng | feh --scale-down -'
+
 # Tmux aliases
 alias ta='tmux attach'
 alias tada='tmux attach -D'
