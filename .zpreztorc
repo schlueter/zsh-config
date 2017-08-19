@@ -7,9 +7,11 @@ zstyle ':prezto:load' pmodule \
   'environment' \
   'git' \
   'history' \
-  'prompt' \
   'python' \
-  'utility'
+  'utility' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'prompt'
 
 zstyle ':prezto:module:prompt' theme 'schlueter'
 
@@ -18,15 +20,24 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 
 zstyle ':prezto:module:syntax-highlighting' highlighters \
   'main' \
   'brackets' \
-  'pattern' \
   'cursor' \
+  'pattern' \
   'root'
 
 zstyle ':prezto:module:syntax-highlighting' styles \
-  'builtin' 'bg=blue' \
-  'command' 'bg=green' \
-  'function' 'bg=yellow'
+  'builtin' 'fg=blue' \
+  'command' 'fg=green' \
+  'function' 'fg=yellow'
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+
+# To differentiate aliases from other command types
+ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta,bold'
+
+# To have paths colored instead of underlined
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan,bold'
