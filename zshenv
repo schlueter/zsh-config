@@ -5,13 +5,16 @@ export LESS='-g -i -M -R -S -w -z-4 -F -X'
 export LESSOPEN='|lesspreprocess %s'
 export NVM_DIR="$HOME/.nvm"
 export PAGER='less'
-export PYENV_ROOT="$HOME/.pyenv"
 export PYTHONSTARTUP=~/.pythonrc
-export RBENV_ROOT="$HOME/.rbenv"
 export VISUAL="$EDITOR"
 export ZDOTDIR="$HOME/.config/zsh"
+
+export PYENV_ROOT="$ZDOTDIR/pyenv"
+export RBENV_ROOT="$HOME/.rbenv"
+
 export path=(
   "$HOME/bin"
+  "$HOME/ubin"
   "$HOME/.local/bin"
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
