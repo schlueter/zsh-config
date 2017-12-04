@@ -10,3 +10,6 @@
 [submodule "pyenv"]
 	path = pyenv
 	url = git@github.com:pyenv/pyenv
+[submodule "rbenv"]
+	path = rbenv
+	url = https://github.com/rbenv/rbenv.git

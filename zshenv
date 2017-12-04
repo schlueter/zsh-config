@@ -10,7 +10,7 @@ export VISUAL="$EDITOR"
 export ZDOTDIR="$HOME/.config/zsh"
 
 export PYENV_ROOT="$ZDOTDIR/pyenv"
-export RBENV_ROOT="$HOME/.rbenv"
+export RBENV_ROOT="$ZDOTDIR/.rbenv"
 
 export path=(
   "$HOME/bin"
@@ -18,11 +18,12 @@ export path=(
   "$HOME/.local/bin"
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
+  "$HOME/.cargo/bin"
   $path
 )
 
 case "$OSTYPE" in
-    # linux*) ;;
+    linux*) true;;
     darwin*) export BROWSER='open';;
 esac
 
