@@ -10,7 +10,7 @@ export VISUAL="$EDITOR"
 export ZDOTDIR="$HOME/.config/zsh"
 
 export PYENV_ROOT="$ZDOTDIR/pyenv"
-export RBENV_ROOT="$ZDOTDIR/.rbenv"
+export RBENV_ROOT="$ZDOTDIR/rbenv"
 
 export path=(
   "$HOME/bin"
