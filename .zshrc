@@ -32,9 +32,6 @@ do
     fi
 done
 
-# Init stack
-eval "$(stack --bash-completion-script stack)"
-
 # Init the node version manager
 source "$ZDOTDIR/nvm/nvm.sh"
 
@@ -46,3 +43,7 @@ autoload -U +X compinit && compinit
 
 # TODO explain
 autoload -U +X bashcompinit && bashcompinit
+
+# bashcompinit must come before stack bash completion init
+# Init stack completion
+eval "$(stack --bash-completion-script stack)"
