@@ -20,7 +20,8 @@ export fpath=("$ZDOTDIR/completions" $fpath)
 autoload -U compinit
 compinit
 
-# Disable stop/start of terminal on ctrl-s (maybe replace with ixany
+# Disable stop/start of terminal on ctrl-s (maybe replace with ixany)
+# see stty(1)
 # stty -ixon
 
 # Init some script language managers
