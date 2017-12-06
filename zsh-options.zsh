@@ -40,6 +40,7 @@ setopt pushdsilent
 setopt pushdtohome
 setopt rcquotes
 setopt sharehistory
-setopt shinstdin
+# Causes error
+#setopt shinstdin
 setopt zle
 
