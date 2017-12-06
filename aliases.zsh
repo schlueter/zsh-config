@@ -1,14 +1,6 @@
 # Haskell
 alias edot='dot -Tpng | feh --scale-down -'
 
-# Tmux aliases
-alias ta='tmux attach'
-alias tada='tmux attach -D'
-
-# Keychain
-alias opensesame='eval $(keychain --eval --agents gpg,ssh id_ed25519 8C4854C3 --quiet)'
-alias 1001=opensesame
-
 # Vagrant
 alias vb='vagrant box'
 alias vd='vagrant destroy'
@@ -119,69 +111,81 @@ alias gw='git browse'
 alias .z='TASKS=1 source "${ZDOTDIR}"/.zshrc'
 alias agrep='alias | grep'
 alias allow='sudo xattr -d -r com.apple.quarantine'
-alias c='clear'
-alias car=create_ansible_role
-alias cpwd='pwd | pbcopy'
 alias fuck='sudo $(fc -ln -1)'
 alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-alias rm!='rm -f'
-alias tt=travistest
 
 #!!! An alias doesn't work, use the function instead !!!
-git () { hub $@ }
-gdv () { git diff -w "$@" | view - }
-gfg () { git ls-files | grep $@ }
+git () {
+    hub $@
+}
+
+gdv () {
+    git diff -w "$@" | view -
+}
+
+gfg () {
+    git ls-files | grep $@
+}
+
 compdef _git gdv=git-diff
 
 git_primary_branch () {
-  git rev-parse --symbolic-full-name origin
+    git rev-parse --symbolic-full-name origin
 }
+
 git_primary_branch_base () {
-  local ref
-  ref=$(git rev-parse --symbolic-full-name origin)
-  if [[ $? != 0 ]]
-  then
-    [[ $ret == 128 ]] && return  # no git repo.
-    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  fi
-  echo ${ref#refs/remotes/origin/}
+    local ref
+    ref=$(git rev-parse --symbolic-full-name origin)
+    if [[ $? != 0 ]]
+    then
+        [[ $ret == 128 ]] && return  # no git repo.
+        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo ${ref#refs/remotes/origin/}
 }
+
 git_current_branch () {
-  local ref
-  ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
-  if [[ $? != 0 ]]
-  then
-    [[ $ret == 128 ]] && return  # no git repo.
-    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  fi
-  echo ${ref#refs/heads/}
+    local ref
+    ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
+    if [[ $? != 0 ]]
+    then
+        [[ $ret == 128 ]] && return  # no git repo.
+        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+    fi
+    echo "${ref#refs/heads/}"
 }
-git_cherry_pick_file() {
+
+git_cherry_pick_file () {
     git cherry-pick -n $1
     git reset HEAD
     git add $2
     git checkout $(git rev-parse --show-toplevel)
 }
+
 git_checkout_and_pull () {
-  git checkout $1
-  git pull
+    git checkout $1
+    git pull
 }
+
 git_checkout_pull_request () {
-  [[ -z "$3" ]] && remote=upstream || remote=$3
-  [[ -z "$2" ]] && branch=PR$1 || branch=$2
-  git fetch $remote pull/$1/head:$branch
-  git checkout $branch
+    [[ -z "$3" ]] && remote=upstream || remote=$3
+    [[ -z "$2" ]] && branch=PR$1 || branch=$2
+    git fetch $remote pull/$1/head:$branch
+    git checkout $branch
 }
+
 git_delete_branch_local_and_origin () {
-  git branch --delete $1
-  git push origin :$1
+    git branch --delete $1
+    git push origin :$1
 }
+
 git_force_delete_branch_local_and_origin () {
-  git branch --delete --force $1
-  git push origin :$1
+    git branch --delete --force $1
+    git push origin :$1
 }
+
 use-gnu-tools () {
-    export PATH=/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH
+    export PATH="/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH"
 }
 
 realpath () {
@@ -189,14 +193,15 @@ realpath () {
 }
 
 colors () {
-	for i in {0..255}
-	do
-		printf "\x1b[38;5;${i}m${i}\n"
-	done
+    for i in {0..255}
+    do
+        printf "\x1b[38;5;${i}m${i}\n"
+    done
 }
 
 agent () {
     eval `ssh-agent -s`
     ssh-add
 }
+
 alias | grep gpa &>/dev/null && unalias gpa
