@@ -120,6 +120,15 @@ alias fuck='sudo $(fc -ln -1)'
 alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias rm!='rm -f'
 alias tt=travistest
+alias sshr='ssh-keygen -R'
+alias sshe='ssh -O exit'
+alias ussh=try_ssh_forever
+
+try_ssh_forever () {
+  until ssh $@
+  do printf '\33[2K\33[A'
+  done
+}
 
 #!!! An alias doesn't work, use the function instead !!!
 git () { hub $@ }
@@ -183,14 +192,18 @@ realpath () {
 }
 
 colors () {
-	for i in {0..255}
-	do
-		printf "\x1b[38;5;${i}m${i}\n"
-	done
+  for i in {0..255}
+  do
+    printf "\x1b[38;5;${i}m${i}\n"
+  done
 }
 
 git_recent_branches () {
-  git reflog | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1 \2/p' | xargs -n 2 printf "%-$((COLUMNS/2-10))s %$((COLUMNS/2-10))s\n"
+  git reflog \
+    | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1\
+\2/p' \
+    | head "-${1:-100}" \
+    | sort -u
 }
 
 agent () {

@@ -21,11 +21,13 @@ LESSOPEN='|lesspreprocess %s'
 PYTHONSTARTUP=~/.pythonrc
 NVM_DIR="$HOME/.nvm"
 PYENV_ROOT="$HOME/.pyenv"
+GROOVY_HOME=/usr/local/opt/groovy/libexec
 
 path=("$HOME/bin" "$HOME/.local/bin"  "$PYENV_ROOT/bin" $path)
 
 export CLASSPATH \
        EDITOR \
+       GROOVY_HOME \
        LANG \
        LESS \
        LESSOPEN \
