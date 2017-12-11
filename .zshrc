@@ -14,7 +14,7 @@ source "$ZDOTDIR/vim-mode.zsh"
 source "$ZDOTDIR/aliases.zsh"
 
 # TODO explain
-export fpath=("$ZDOTDIR/completions" $fpath)
+#export fpath=( "$ZDOTDIR/completions" $fpath )
 
 # TODO explain
 autoload -U compinit
