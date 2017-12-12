@@ -114,6 +114,16 @@ alias agrep='alias | grep'
 alias allow='sudo xattr -d -r com.apple.quarantine'
 alias fuck='sudo $(fc -ln -1)'
 alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
+alias sshr='ssh-keygen -R'
+alias sshe='ssh -O exit'
+alias ussh=try_ssh_forever
+
+try_ssh_forever () {
+    until ssh $@
+    do printf '\33[2K\33[A'
+    done
+}
+
 
 #!!! An alias doesn't work, use the function instead !!!
 git () {
@@ -201,7 +211,11 @@ colors () {
 }
 
 git_recent_branches () {
-  git reflog | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1 \2/p' | xargs -n 2 printf "%-$((COLUMNS/2-10))s %$((COLUMNS/2-10))s\n"
+    git reflog \
+    | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1\
+\2/p' \
+    | head "-${1:-100}" \
+    | sort -u
 }
 
 agent () {
