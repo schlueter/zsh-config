@@ -53,4 +53,3 @@ eval "$(stack --bash-completion-script stack)"
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
 fi
-eval $(minikube docker-env)
