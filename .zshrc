@@ -48,3 +48,9 @@ autoload -U +X bashcompinit && bashcompinit
 # bashcompinit must come before stack bash completion init
 # Init stack completion
 eval "$(stack --bash-completion-script stack)"
+
+# kubectl completion
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+eval $(minikube docker-env)
