@@ -24,19 +24,21 @@ compinit
 # see stty(1)
 stty -ixon
 
-# Init some script language managers
-for init in rbenv pyenv
-do
-    if which $init >/dev/null
-    then eval "$($init init -)"
-    else echo "$init not available, ignoring..."
-    fi
-done
+pyenv() {
+    eval "$( command pyenv init - )"
+    pyenv "$@"
+}
 
-# Init the node version manager
-source "$ZDOTDIR/nvm/nvm.sh"
+rbenv() {
+    eval "$( command rbenv init - )"
+    rbenv "$@"
+}
 
-# Load the z "jump around" cd replacement
+nvm() {
+		source "$ZDOTDIR/nvm/nvm.sh"
+    nvm "$@"
+}
+
 source "$ZDOTDIR/z/z.sh"
 
 # TODO this looks like a dup
@@ -48,6 +50,3 @@ autoload -U +X bashcompinit && bashcompinit
 # bashcompinit must come before stack bash completion init
 # Init stack completion
 eval "$(stack --bash-completion-script stack)"
-
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
-(exit 0)
