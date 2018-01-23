@@ -22,7 +22,7 @@ compinit
 
 # Disable stop/start of terminal on ctrl-s (maybe replace with ixany)
 # see stty(1)
-# stty -ixon
+stty -ixon
 
 # Init some script language managers
 for init in rbenv pyenv
@@ -39,7 +39,7 @@ source "$ZDOTDIR/nvm/nvm.sh"
 # Load the z "jump around" cd replacement
 source "$ZDOTDIR/z/z.sh"
 
-# TODO this seems looks like a dup
+# TODO this looks like a dup
 autoload -U +X compinit && compinit
 
 # TODO explain
@@ -48,3 +48,6 @@ autoload -U +X bashcompinit && bashcompinit
 # bashcompinit must come before stack bash completion init
 # Init stack completion
 eval "$(stack --bash-completion-script stack)"
+
+[ $commands[kubectl] ] && source <(kubectl completion zsh)
+(exit 0)

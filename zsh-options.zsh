@@ -32,7 +32,8 @@ setopt noclobber
 setopt noflowcontrol
 setopt nohup
 setopt nonomatch
-setopt nopromptsp
+# Preserve lines w/o trailing newline
+setopt promptsp
 setopt pathdirs
 setopt promptsubst
 setopt pushdignoredups
@@ -40,7 +41,6 @@ setopt pushdsilent
 setopt pushdtohome
 setopt rcquotes
 setopt sharehistory
-# Causes error
-#setopt shinstdin
+## Causes error
+##setopt shinstdin
 setopt zle
-
