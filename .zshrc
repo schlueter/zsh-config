@@ -22,24 +22,26 @@ compinit
 
 # Disable stop/start of terminal on ctrl-s (maybe replace with ixany)
 # see stty(1)
-# stty -ixon
+stty -ixon
 
-# Init some script language managers
-for init in rbenv pyenv
-do
-    if which $init >/dev/null
-    then eval "$($init init -)"
-    else echo "$init not available, ignoring..."
-    fi
-done
+pyenv() {
+    eval "$( command pyenv init - )"
+    pyenv "$@"
+}
 
-# Init the node version manager
-source "$ZDOTDIR/nvm/nvm.sh"
+rbenv() {
+    eval "$( command rbenv init - )"
+    rbenv "$@"
+}
 
-# Load the z "jump around" cd replacement
+nvm() {
+		source "$ZDOTDIR/nvm/nvm.sh"
+    nvm "$@"
+}
+
 source "$ZDOTDIR/z/z.sh"
 
-# TODO this seems looks like a dup
+# TODO this looks like a dup
 autoload -U +X compinit && compinit
 
 # TODO explain
