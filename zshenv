@@ -19,6 +19,7 @@ export path=(
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
   "$HOME/.cargo/bin"
+  /usr/local/bin
   $path
 )
 
