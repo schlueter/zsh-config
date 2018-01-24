@@ -223,5 +223,8 @@ agent () {
     ssh-add
 }
 
+brew () {
+    env PATH=${PATH//$(pyenv root)\/shims:/} brew "$@"
+}
 alias | grep gpa &>/dev/null && unalias gpa
 
