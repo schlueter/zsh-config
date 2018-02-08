@@ -39,6 +39,8 @@ nvm() {
     nvm "$@"
 }
 
+pyenv >/dev/null 2>&1
+
 source "$ZDOTDIR/z/z.sh"
 
 # TODO this looks like a dup
