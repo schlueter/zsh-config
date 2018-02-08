@@ -35,7 +35,7 @@ rbenv() {
 }
 
 nvm() {
-		source "$ZDOTDIR/nvm/nvm.sh"
+    source "$ZDOTDIR/nvm/nvm.sh"
     nvm "$@"
 }
 
