@@ -1,6 +1,9 @@
+# Source environment first
+source "$ZDOTDIR/zshenv"
+source "$ZDOTDIR/zenv"
 # Source the zsh framework init first
 source "$ZDOTDIR/.zprezto/init.zsh"
-fortune
+#fortune
 
 # See zshbuiltins(1)
 typeset -gU cdpath fpath mailpath path

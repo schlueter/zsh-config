@@ -1,0 +1,25 @@
+export CLASSPATH="$HOME/workspace/libs"
+export LANG='en_US.UTF-8'
+export LESS='-g -i -M -R -S -w -z-4 -F -X'
+export LESSOPEN='|lesspreprocess %s'
+export NVM_DIR="$HOME/.nvm"
+export PAGER='less'
+export PYTHONSTARTUP=~/.pythonrc
+export VISUAL="$EDITOR"
+export HOMEBREW_GITHUB_API_TOKEN="4c370e568b90664ee843d05c1fc582e6c62e53f8"
+
+export PYENV_ROOT="$ZDOTDIR/pyenv"
+export RBENV_ROOT="$ZDOTDIR/rbenv"
+
+export path=(
+  "$HOME/.local/bin"
+  "$PYENV_ROOT/bin"
+  "$RBENV_ROOT/bin"
+  "$HOME/.cargo/bin"
+  $path
+)
+
+case "$OSTYPE" in
+    linux*) true;;
+    darwin*) export BROWSER='open';;
+esac
