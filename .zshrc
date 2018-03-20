@@ -1,9 +1,6 @@
-# Source environment first
 source "$ZDOTDIR/zshenv"
 source "$ZDOTDIR/zenv"
-# Source the zsh framework init first
 source "$ZDOTDIR/.zprezto/init.zsh"
-#fortune
 
 # See zshbuiltins(1)
 typeset -gU cdpath fpath mailpath path
@@ -30,3 +27,5 @@ autoload -U +X bashcompinit && bashcompinit
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
 [ -e "$ZDOTDIR/nvm/nvm.sh" ] && source "$ZDOTDIR/nvm/nvm.sh"
 [ -e "$ZDOTDIR/z/z.sh" ] && source "$ZDOTDIR/z/z.sh"
+
+source "$HOME/.secrets"

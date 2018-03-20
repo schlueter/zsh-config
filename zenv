@@ -6,7 +6,6 @@ export NVM_DIR="$HOME/.nvm"
 export PAGER='less'
 export PYTHONSTARTUP=~/.pythonrc
 export VISUAL="$EDITOR"
-export HOMEBREW_GITHUB_API_TOKEN="4c370e568b90664ee843d05c1fc582e6c62e53f8"
 
 export PYENV_ROOT="$ZDOTDIR/pyenv"
 export RBENV_ROOT="$ZDOTDIR/rbenv"
