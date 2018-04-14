@@ -28,4 +28,12 @@ autoload -U +X bashcompinit && bashcompinit
 [ -e "$ZDOTDIR/nvm/nvm.sh" ] && source "$ZDOTDIR/nvm/nvm.sh"
 [ -e "$ZDOTDIR/z/z.sh" ] && source "$ZDOTDIR/z/z.sh"
 
+if ! pgrep ssh-agent >/dev/null
+then
+    eval `ssh-agent`
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+
+
 source "$HOME/.secrets"
