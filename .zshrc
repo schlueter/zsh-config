@@ -35,5 +35,4 @@ then
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
-
 source "$HOME/.secrets"
