@@ -10,13 +10,14 @@ export VISUAL="$EDITOR"
 export PYENV_ROOT="$ZDOTDIR/pyenv"
 export RBENV_ROOT="$ZDOTDIR/rbenv"
 
-export path=(
+path=(
   "$HOME/.local/bin"
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
   "$HOME/.cargo/bin"
   $path
 )
+export path
 
 case "$OSTYPE" in
     linux*) true;;
