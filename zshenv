@@ -7,5 +7,5 @@ fi
 export TMPPREFIX="${TMPDIR%/}/zsh"
 export EDITOR='vim'
 export ZDOTDIR="$HOME/.config/zsh"
-path=($HOME/bin $HOME/ubin /usr/local/bin $path)
+path=("$HOME/bin" "$HOME/local/bin" /usr/local/bin $path)
 export path
