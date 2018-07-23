@@ -101,7 +101,7 @@ alias gtd='git stash drop'
 alias gtp='git stash pop'
 alias gts='git stash show'
 ## misc
-alias gre=git_recent_branches
+alias gre=git-recent-refs
 
 ## Hub aliases
 alias gpr='git pull-request'
