@@ -31,6 +31,7 @@ autoload -U +X bashcompinit && bashcompinit
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
 then
+    rm -f $SSH_AUTH_SOCK
     eval "$(ssh-agent -a $SSH_AUTH_SOCK)"
     ssh-add
 fi
