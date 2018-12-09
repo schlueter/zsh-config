@@ -9,9 +9,10 @@ export VISUAL="$EDITOR"
 
 export PYENV_ROOT="$ZDOTDIR/pyenv"
 export RBENV_ROOT="$ZDOTDIR/rbenv"
+export GOPATH="$HOME/go"
 
 path=(
-  "$HOME/.local/bin"
+  "$GOPATH/bin"
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
   "$HOME/.cargo/bin"
