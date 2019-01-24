@@ -2,7 +2,6 @@ zstyle ':prezto:*:*' color 'yes'
 
 zstyle ':prezto:load' pmodule \
   'completion' \
-  'directory' \
   'editor' \
   'environment' \
   'git' \

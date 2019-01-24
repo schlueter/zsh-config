@@ -1,6 +1,6 @@
 # TODO most of these are just what I'm used to, they should be explained
 setopt alwaystoend
-setopt autocd
+unsetopt autocd             # Don't cd with cd
 setopt autonamedirs
 setopt autopushd
 setopt autoresume
@@ -9,8 +9,7 @@ setopt cdablevars
 setopt combiningchars
 setopt completeinword
 setopt correct
-# Because it's how I type
-setopt dvorak
+setopt dvorak               # Because it's how I type
 setopt extendedglob
 setopt extendedhistory
 setopt histexpiredupsfirst
@@ -32,8 +31,7 @@ setopt noclobber
 setopt noflowcontrol
 setopt nohup
 setopt nonomatch
-# Preserve lines w/o trailing newline
-setopt promptsp
+setopt promptsp             # Preserve lines w/o trailing newline
 setopt pathdirs
 setopt promptsubst
 setopt pushdignoredups
@@ -41,6 +39,4 @@ setopt pushdsilent
 setopt pushdtohome
 setopt rcquotes
 setopt sharehistory
-## Causes error
-##setopt shinstdin
 setopt zle
