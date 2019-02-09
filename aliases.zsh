@@ -127,7 +127,13 @@ try_ssh_forever () {
 
 #!!! An alias doesn't work, use the function instead !!!
 git () {
-    hub $@
+    if which hub 2>/dev/null
+    then
+        hub $@
+    else
+	unset -f git
+	git $@
+    fi
 }
 
 gdv () {

@@ -28,12 +28,15 @@ autoload -U +X bashcompinit && bashcompinit
 [ -e "$ZDOTDIR/nvm/nvm.sh" ] && source "$ZDOTDIR/nvm/nvm.sh"
 [ -e "$ZDOTDIR/z/z.sh" ] && source "$ZDOTDIR/z/z.sh"
 
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
+if [ ! "$SSH_AUTH_SOCK" ]
 then
-    rm -f $SSH_AUTH_SOCK
-    eval "$(ssh-agent -a $SSH_AUTH_SOCK)"
-    ssh-add
+    export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+    if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
+    then
+        rm -f $SSH_AUTH_SOCK
+        eval "$(ssh-agent -a $SSH_AUTH_SOCK)"
+        ssh-add
+    fi
 fi
 
 [ -e "$HOME/.secrets" ] && source "$HOME/.secrets"
