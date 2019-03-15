@@ -120,19 +120,20 @@ alias ussh=try_ssh_forever
 
 try_ssh_forever () {
     until ssh $@
-    do printf '\33[2K\33[A'
+    do
+        printf '\33[2K\33[A'
     done
 }
 
 
 #!!! An alias doesn't work, use the function instead !!!
 git () {
-    if which hub 2>/dev/null
+    if which hub >/dev/null 2>&1
     then
         hub $@
     else
-	unset -f git
-	git $@
+        unset -f git
+        git $@
     fi
 }
 
