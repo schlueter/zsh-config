@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 source "$ZDOTDIR/zshenv"
 source "$ZDOTDIR/zenv"
 source "$ZDOTDIR/.zprezto/init.zsh"
