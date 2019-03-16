@@ -25,8 +25,8 @@ autoload -U +X bashcompinit && bashcompinit
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
 [ $commands[stack] ] && eval "$(stack --bash-completion-script stack)"
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
-[ -e "$ZDOTDIR/nvm/nvm.sh" ] && source "$ZDOTDIR/nvm/nvm.sh"
-[ -e "$ZDOTDIR/z/z.sh" ] && source "$ZDOTDIR/z/z.sh"
+[ -e "$HOME/.config/nvm/nvm.sh" ] && source "$HOME/.config/nvm/nvm.sh"
+[ -e "$HOME/.config/z/z.sh" ] && source "$HOME/.config/z/z.sh"
 
 if [ ! "$SSH_AUTH_SOCK" ]
 then

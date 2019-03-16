@@ -2,19 +2,3 @@
 	path = .zprezto
 	url = git@github.com:schlueter/prezto
 	branch = master
-[submodule "nvm"]
-	path = nvm
-	url = https://github.com/creationix/nvm.git
-	branch = master
-[submodule "z"]
-	path = z
-	url = https://github.com/rupa/z.git
-	branch = master
-[submodule "pyenv"]
-	path = pyenv
-	url = git@github.com:pyenv/pyenv
-	branch = master
-[submodule "rbenv"]
-	path = rbenv
-	url = https://github.com/rbenv/rbenv.git
-	branch = master
