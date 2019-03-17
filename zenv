@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 export CLASSPATH="$HOME/workspace/libs"
 export LANG='en_US.UTF-8'
 export LESS='-g -i -M -R -S -w -z-4 -F -X'
@@ -6,9 +7,10 @@ export PAGER='less'
 export PYTHONSTARTUP=~/.pythonrc
 export VISUAL="$EDITOR"
 
-export NVM_DIR="$HOME/.config/nvm"
-export PYENV_ROOT="$HOME/.config/pyenv"
-export RBENV_ROOT="$HOME/.config/rbenv"
+export Z_DIR="$XDG_CONFIG_HOME/z"
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
+export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 export GOPATH="$HOME/go"
 
 path=(

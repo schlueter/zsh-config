@@ -6,13 +6,8 @@ source "$ZDOTDIR/.zprezto/init.zsh"
 # See zshbuiltins(1)
 typeset -gU cdpath fpath mailpath path
 
-# Set zsh options
 source "$ZDOTDIR/zsh-options.zsh"
-
-# Configure vim mode for zsh
 source "$ZDOTDIR/vim-mode.zsh"
-
-# Load aliases
 source "$ZDOTDIR/aliases.zsh"
 
 autoload -U compinit
@@ -26,12 +21,12 @@ autoload -U +X bashcompinit && bashcompinit
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
 [ $commands[stack] ] && eval "$(stack --bash-completion-script stack)"
 [ $commands[kubectl] ] && source <(kubectl completion zsh)
-[ -e "$HOME/.config/nvm/nvm.sh" ] && source "$HOME/.config/nvm/nvm.sh"
-[ -e "$HOME/.config/z/z.sh" ] && source "$HOME/.config/z/z.sh"
+[ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+[ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh"
 
 if [ ! "$SSH_AUTH_SOCK" ]
 then
-    export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+    export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
     if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
     then
         rm -f $SSH_AUTH_SOCK
@@ -40,4 +35,6 @@ then
     fi
 fi
 
-[ -e "$HOME/.secrets" ] && source "$HOME/.secrets"
+secrets_file="$XDG_CONFIG_HOME/.secrets"
+[ -e "$secrets_file" ] && source "$secrets_file"
+unset secrets_file

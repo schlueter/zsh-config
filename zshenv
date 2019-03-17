@@ -6,13 +6,15 @@ then
   mkdir -p -m 700 "$TMPDIR"
 fi
 
+XDG_CONFIG_HOME="$HOME/.config"
 TMPPREFIX="$TMPDIR/zsh"
 EDITOR='vim'
-ZDOTDIR="$HOME/.config/zsh"
+ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
 export TMPDIR \
        TMPPREFIX \
        EDITOR \
        ZDOTDIR \
-       PATH
+       PATH \
+       XDG_CONFIG_HOME
