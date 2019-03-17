@@ -7,6 +7,7 @@ export PAGER='less'
 export PYTHONSTARTUP=~/.pythonrc
 export VISUAL="$EDITOR"
 
+export VAGRANT_HOME="$XDG_CONFIG_HOME/.vagrant.d"
 export Z_DIR="$XDG_CONFIG_HOME/z"
 export NVM_DIR="$XDG_CONFIG_HOME/nvm"
 export PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
