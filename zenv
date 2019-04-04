@@ -21,7 +21,12 @@ path=(
   "$HOME/.cargo/bin"
   $path
 )
-export path
+fpath=(
+  "$XDG_CONFIG_HOME/zsh-completions"
+  $fpath
+)
+
+export path fpath
 
 case "$OSTYPE" in
     linux*) true;;
