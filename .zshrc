@@ -10,12 +10,6 @@ source "$ZDOTDIR/zsh-options.zsh"
 source "$ZDOTDIR/vim-mode.zsh"
 source "$ZDOTDIR/aliases.zsh"
 
-autoload -U compinit
-compinit
-
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-
 # Initialize some things if they are present
 [ $commands[pyenv] ] && eval "$( command pyenv init - )"
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
