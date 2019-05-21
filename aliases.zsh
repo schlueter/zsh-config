@@ -12,7 +12,7 @@ alias ussh=try_ssh_forever
 
 
 # From files
-for f in aliases/*
+for f in "$ZDOTDIR"/aliases/*
 do
     source "$f"
 done
