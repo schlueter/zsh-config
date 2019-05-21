@@ -13,11 +13,20 @@ source "$ZDOTDIR/aliases.zsh"
 # Initialize some things if they are present
 [ $commands[pyenv] ] && eval "$( command pyenv init - )"
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
-[ $commands[stack] ] && eval "$(stack --bash-completion-script stack)"
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
 [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh"
 
+# Additional completions
+if [ $commands[stack] ]
+then
+    autoload -U +X bashcompinit
+    bashcompinit
+    eval "$(stack --bash-completion-script stack)"
+fi
+
+[ $commands[kubectl] ] && source <(kubectl completion zsh)
+
+# Initialize the ssh-agent
 if [ ! "$SSH_AUTH_SOCK" ]
 then
     export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
@@ -29,6 +38,10 @@ then
     fi
 fi
 
-secrets_file="$XDG_CONFIG_HOME/.secrets"
-[ -e "$secrets_file" ] && source "$secrets_file"
-unset secrets_file
+load_secrets () {
+    local secrets_file
+    secrets_file="$XDG_CONFIG_HOME/.secrets"
+    [ -e "$secrets_file" ] && source "$secrets_file"
+}
+
+load_secrets
