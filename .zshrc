@@ -24,7 +24,7 @@ then
     eval "$(stack --bash-completion-script stack)"
 fi
 
-[ $commands[kubectl] ] && source <(kubectl completion zsh)
+[ $commands[kubectl] ] && eval "$(kubectl completion zsh)"
 
 # Initialize the ssh-agent
 if [ ! "$SSH_AUTH_SOCK" ]
@@ -33,7 +33,7 @@ then
     if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
     then
         rm -f $SSH_AUTH_SOCK
-        eval "$(ssh-agent -a $SSH_AUTH_SOCK)"
+        eval "$(ssh-agent -a "$SSH_AUTH_SOCK")"
         ssh-add
     fi
 fi
