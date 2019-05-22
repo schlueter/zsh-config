@@ -1,4 +1,21 @@
 #!/usr/bin/env zsh
+
+profile_startup () { [ -f "$HOME"/profile-startup ] }
+
+if profile_startup
+then
+
+    zmodload zsh/datetime
+    setopt PROMPT_SUBST
+    PS4='+$EPOCHREALTIME %N:%i> '
+
+    logfile=$(mktemp --tmpdir zsh_profile.XXXXXXXX)
+    echo "Logging to $logfile"
+    exec 3>&2 2>$logfile
+
+    setopt XTRACE
+fi
+
 source "$ZDOTDIR/zshenv"
 source "$ZDOTDIR/zenv"
 source "$ZDOTDIR/.zprezto/init.zsh"
@@ -45,3 +62,9 @@ load_secrets () {
 }
 
 load_secrets
+
+if profile_startup
+then
+    unsetopt XTRACE
+    exec 2>&3 3>&-
+fi
