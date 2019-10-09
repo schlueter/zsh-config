@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
 
-profile_startup () { [ -f "$HOME"/profile-startup ] }
+###############################################################################
+# The profile_startup functionality is only useful for profiling and debugging.
+###############################################################################
+profile_startup="$(if [ -f "$HOME"/profile-startup ]; then echo "yes"; else echo "no"; fi)"
 
-if profile_startup
+if [ "$profile_startup" = yes ]
 then
 
     zmodload zsh/datetime
@@ -11,10 +14,11 @@ then
 
     logfile=$(mktemp --tmpdir zsh_profile.XXXXXXXX)
     echo "Logging to $logfile"
-    exec 3>&2 2>$logfile
+    exec 3>&2 2>!$logfile
 
     setopt XTRACE
 fi
+
 
 source "$ZDOTDIR/zshenv"
 source "$ZDOTDIR/zenv"
@@ -62,8 +66,7 @@ load_secrets () {
 }
 
 load_secrets
-
-if profile_startup
+if [ "$profile_startup" = yes ]
 then
     unsetopt XTRACE
     exec 2>&3 3>&-

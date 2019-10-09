@@ -19,6 +19,8 @@ path=(
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
   "$HOME/.cargo/bin"
+  "$HOME/.local/bin"
+  /opt/terminus/bin
   $path
 )
 fpath=(

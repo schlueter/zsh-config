@@ -12,6 +12,12 @@ EDITOR='vim'
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 PATH="$HOME/bin:$HOME/local/bin:$PATH"
 
+if which surf >/dev/null
+then
+  BROWSER=surf
+  export BROWSER
+fi
+
 export TMPDIR \
        TMPPREFIX \
        EDITOR \

@@ -8,8 +8,7 @@ alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sshr='ssh-keygen -R'
 alias sshe='ssh -O exit'
 alias ussh=try_ssh_forever
-
-
+alias s=surf-manager
 
 # From files
 for f in "$ZDOTDIR"/aliases/*
@@ -24,83 +23,6 @@ try_ssh_forever () {
     done
 }
 
-
-#!!! An alias doesn't work, use the function instead !!!
-git () {
-    # Don't break git if hub isn't installed yet
-    if which hub >/dev/null 2>&1
-    then
-        hub $@
-    else
-        unset -f git
-        git $@
-    fi
-}
-
-gdv () {
-    git diff -w "$@" | view -
-}
-
-gfg () {
-    git ls-files | grep $@
-}
-
-compdef _git gdv=git-diff
-
-git_primary_branch () {
-    git rev-parse --symbolic-full-name origin
-}
-
-git_primary_branch_base () {
-    local ref
-    ref=$(git rev-parse --symbolic-full-name origin)
-    if [[ $? != 0 ]]
-    then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/remotes/origin/}
-}
-
-git_current_branch () {
-    local ref
-    ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
-    if [[ $? != 0 ]]
-    then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo "${ref#refs/heads/}"
-}
-
-git_cherry_pick_file () {
-    git cherry-pick -n $1
-    git reset HEAD
-    git add $2
-    git checkout $(git rev-parse --show-toplevel)
-}
-
-git_checkout_and_pull () {
-    git checkout $1
-    git pull
-}
-
-git_checkout_pull_request () {
-    [[ -z "$3" ]] && remote=upstream || remote=$3
-    [[ -z "$2" ]] && branch=PR$1 || branch=$2
-    git fetch $remote pull/$1/head:$branch
-    git checkout $branch
-}
-
-git_delete_branch_local_and_origin () {
-    git branch --delete $1
-    git push origin :$1
-}
-
-git_force_delete_branch_local_and_origin () {
-    git branch --delete --force $1
-    git push origin :$1
-}
 
 use-gnu-tools () {
     export PATH="/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH"
