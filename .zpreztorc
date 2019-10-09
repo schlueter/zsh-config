@@ -12,9 +12,8 @@ zstyle ':prezto:load' pmodule \
   'prompt'
 
 zstyle ':prezto:module:prompt' theme 'schlueter'
-
 zstyle ':prezto:module:editor' key-bindings 'emacs'
-
+zstyle ':prezto:module:git:alias' skip 'yes'
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
