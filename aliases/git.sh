@@ -1,3 +1,4 @@
+alias gRl='git remote -v'
 alias ga='git add'
 ## branch
 alias gb='git    branch'
@@ -7,13 +8,12 @@ alias gbr='git   branch -r --no-merged'
 alias gbm='git   branch -r --merged'
 alias gdl=git_delete_branch_local_and_origin
 alias gdl!=git_force_delete_branch_local_and_origin
-alias gdra='gb -r --merged | awk "!/master/{sub(\"origin/\", \"\", $1); print $0}" | xargs -n1 -I{} git push origin :{}'
 ## checkout
 alias gco='git  checkout'
 alias gcb='git  checkout -b'
 alias gch='git  checkout HEAD'
 alias gcm='gco $(git_primary_branch_base)'
-alias gcml='git checkout master && git pull'
+alias gcml='gcm && git pull'
 alias gcul='git checkout master && git pull upstream master'
 alias gcol=git_checkout_and_pull
 alias gcop=git_checkout_pull_request
@@ -162,3 +162,5 @@ git_force_delete_branch_local_and_origin () {
     git push origin :$1
 }
 
+alias gss='git stash save --include-untracked'
+alias gsp='git stash pop'
