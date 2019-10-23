@@ -10,7 +10,7 @@ XDG_CONFIG_HOME="$HOME/.config"
 TMPPREFIX="$TMPDIR/zsh"
 EDITOR='vim'
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
-PATH="$HOME/bin:$HOME/local/bin:$PATH"
+PATH="$HOME/bin:$HOME/.local/bin:$HOME/go/bin:$HOME/.cargo/bin:$PATH"
 
 if which surf >/dev/null
 then

@@ -15,11 +15,8 @@ export RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 export GOPATH="$HOME/go"
 
 path=(
-  "$GOPATH/bin"
   "$PYENV_ROOT/bin"
   "$RBENV_ROOT/bin"
-  "$HOME/.cargo/bin"
-  "$HOME/.local/bin"
   /opt/terminus/bin
   $path
 )
