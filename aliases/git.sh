@@ -21,11 +21,10 @@ alias gcop=git_checkout_pull_request
 alias gcp='git cherry-pick'
 alias gcpf=git_cherry_pick_file
 ## commit
-alias gc='git    commit --verbose'
-alias gc!='git   commit --verbose --amend'
-alias gca='git   commit --verbose --all'
-alias gca!='git  commit --verbose --all --amend'
-alias gcas='git  commit --verbose --all --signoff --no-edit'
+alias gc='git   commit --gpg-sign --verbose'
+alias gc!='gc   --amend'
+alias gca='gc   --all'
+alias gca!='gc! --all'
 ## clone
 alias gcl='git clone --recursive'
 ## config
