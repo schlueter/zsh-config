@@ -19,7 +19,6 @@ then
     setopt XTRACE
 fi
 
-
 source "$ZDOTDIR/zshenv"
 source "$ZDOTDIR/zenv"
 source "$ZDOTDIR/.zprezto/init.zsh"
@@ -34,7 +33,6 @@ source "$ZDOTDIR/aliases.zsh"
 # Initialize some things if they are present
 [ $commands[pyenv] ] && eval "$( command pyenv init - )"
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
-[ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 [ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh"
 
 # Additional completions
@@ -66,6 +64,10 @@ load_secrets () {
 }
 
 load_secrets
+
+# depending on configuration outside this repo, npm may need secrets available
+[ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
 if [ "$profile_startup" = yes ]
 then
     unsetopt XTRACE
