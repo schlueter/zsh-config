@@ -11,7 +11,7 @@ alias ussh=try_ssh_forever
 alias s=surf-manager
 
 # From files
-for f in "$ZDOTDIR"/aliases/*
+for f in "$ZDOTDIR"/aliases/* "$XDG_CONFIG_HOME"/shell_aliases/*
 do
     source "$f"
 done
