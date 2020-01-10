@@ -29,21 +29,12 @@ typeset -gU cdpath fpath mailpath path
 source "$ZDOTDIR/zsh-options.zsh"
 source "$ZDOTDIR/vim-mode.zsh"
 source "$ZDOTDIR/aliases.zsh"
+source "$ZDOTDIR/completions.zsh"
 
 # Initialize some things if they are present
 [ $commands[pyenv] ] && eval "$( command pyenv init - )"
 [ $commands[rbenv] ] && eval "$( command rbenv init - )"
 [ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh"
-
-# Additional completions
-if [ $commands[stack] ]
-then
-    autoload -U +X bashcompinit
-    bashcompinit
-    eval "$(stack --bash-completion-script stack)"
-fi
-
-[ $commands[kubectl] ] && eval "$(kubectl completion zsh)"
 
 # Initialize the ssh-agent
 if [ ! "$SSH_AUTH_SOCK" ]
