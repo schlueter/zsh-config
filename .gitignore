@@ -3,3 +3,4 @@
 .zcompcache
 .zcompdump*
 .zhistory
+.zsh_history
