@@ -11,10 +11,18 @@ alias ussh=try_ssh_forever
 alias s=surf-manager
 
 # From files
-for f in "$ZDOTDIR"/aliases/* "$XDG_CONFIG_HOME"/shell_aliases/*
+for f in "$ZDOTDIR"/aliases/*
 do
     . "$f"
 done
+
+if [ -d "$XDG_CONFIG_HOME/shell_aliases" ]
+then
+    for f in "$XDG_CONFIG_HOME"/shell_aliases/*
+    do
+        . "$f"
+    done
+fi
 
 try_ssh_forever () {
     until ssh $@
