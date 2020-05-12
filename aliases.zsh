@@ -1,6 +1,6 @@
 # Misc
 alias edot='dot -Tpng | feh --scale-down -'
-alias .z='TASKS=1 source "${ZDOTDIR}"/.zshrc'
+alias .z='TASKS=1 . "${ZDOTDIR}"/.zshrc'
 alias agrep='alias | grep'
 alias allow='sudo xattr -d -r com.apple.quarantine'
 alias fuck='sudo $(fc -ln -1)'
@@ -13,7 +13,7 @@ alias s=surf-manager
 # From files
 for f in "$ZDOTDIR"/aliases/* "$XDG_CONFIG_HOME"/shell_aliases/*
 do
-    source "$f"
+    . "$f"
 done
 
 try_ssh_forever () {
