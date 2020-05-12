@@ -1,7 +1,6 @@
 #compdef pass
 #autoload
 
-# Sourced from https://git.zx2c4.com/password-store/commit/src/completion/pass.bash-completion?id=5ef311735c74320483248da2ea68c38eb84ae768
 # Copyright (C) 2012 - 2014:
 #    Johan Venant <jvenant@invicem.pro>
 #    Brian Mattern <rephorm@rephorm.com>

@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
 fpath=(
+  "$XDG_CONFIG_HOME/zsh/completions"
   "$XDG_CONFIG_HOME/zsh-completions"
   $fpath
 )
