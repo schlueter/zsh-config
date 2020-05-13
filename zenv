@@ -1,5 +1,13 @@
 #!/usr/bin/env zsh
 
+if [ "$(uname -s)" = 'Darwin' ]
+then
+    fpath=(
+        $(brew --prefix)/share/zsh-completions
+        $fpath
+    )
+fi
+
 fpath=(
   "$XDG_CONFIG_HOME/zsh/completions"
   "$XDG_CONFIG_HOME/zsh-completions"
