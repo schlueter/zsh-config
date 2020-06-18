@@ -1,0 +1,16 @@
+#compdef gimme-aws-creds
+#autoload
+
+_gimme-aws-creds() {
+    _arguments '-p+[AWS Profiles]:Profiles:->profiles'
+    case "$state" in
+        (profiles) _profiles ;;
+    esac
+}
+
+_profiles() {
+	local IFS=$'\n'
+    _values 'Profiles' $(gimme-aws-creds --list-profiles | sed -En 's/\[(.+)\]/\1/p' | grep "${IPREFIX#-p}")
+}
+
+_gimme-aws-creds
