@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 #compdef gimme-aws-creds
 #autoload
 
@@ -9,8 +10,15 @@ _gimme-aws-creds() {
 }
 
 _profiles() {
-	local IFS=$'\n'
-    _values 'Profiles' $(gimme-aws-creds --list-profiles | sed -En 's/\[(.+)\]/\1/p' | grep "${IPREFIX#-p}")
+    local IFS cache_identifier profiles
+    cache_identifier='gimme-aws-creds_all_profiles'
+    IFS=$'\n'
+    if ! _retrieve_cache "$cache_identifier"
+    then
+        profiles=($(gimme-aws-creds --list-profiles | sed -En 's/\[(.+)\]/\1/p'))
+        _store_cache "$cache_identifier" profiles
+    fi
+    _values 'Profiles' $profiles
 }
 
 _gimme-aws-creds
