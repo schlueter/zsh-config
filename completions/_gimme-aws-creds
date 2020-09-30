@@ -3,8 +3,6 @@
 
 _gimme-aws-creds() {
     _arguments '-p+[AWS Profiles]:Profiles:->profiles'
-    env | tee /tmp/gac_comp.log
-    printf 'state=%s' "$state" | tee -a /tmp/gac_comp.log
     case "$state" in
         (profiles) _profiles ;;
     esac
