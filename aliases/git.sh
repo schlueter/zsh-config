@@ -107,7 +107,7 @@ alias gah=git_annotated_history
 
 ## Hub aliases
 alias gpr='git pull-request'
-alias gppr='git push && git pull-request'
+alias gppr='git push && gh pr create'
 alias gw='git browse'
 
 gdv () {
@@ -176,23 +176,32 @@ git_force_delete_branch_local_and_origin () {
 }
 
 git_annotated_history () {
-    files_in_current_directory="$(find . -mindepth 1 -maxdepth 1 -not \( -wholename '*.git*' -type d \))"
+    files="$1"
+    if ! [ "$files" ]
+    then
+        files="$(
+            find . -mindepth 1 -maxdepth 1 \
+                -not \( -wholename '*.git*' -type d \)
+        )"
+    fi
     filename_width=0
-    FS=$'\n'
     while read -r filename
     do
-        echo "considering length of $filename"
+        filename="${filename/.\/}"
         if [ "${#filename}" -gt "$filename_width" ]
         then
             filename_width="${#filename}"
         fi
-    done <$files_in_current_directory
+    done <<<$files
 
     while read -r filename
     do
-        echo "printing line for $filename"
-        printf "%-$((filename_width+3))s %s\n" "$filename" "$(
-            git log -n 1 --relative-date --pretty=reference "$filename" || printf 'Untracked'
-        )"
-    done <$files_in_current_directory
+        filename="${filename/.\/}"
+        info="$(git log -n 1 --relative-date --pretty=reference "$filename")"
+        if ! [ $info ]
+        then
+            info='Untracked'
+        fi
+        printf "%-$((filename_width))s%s\n" "$filename" "$info"
+    done <<<$files
 }
