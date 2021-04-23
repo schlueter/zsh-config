@@ -63,11 +63,11 @@ alias ghi="git log --graph --decorate=short --date=short --pretty=format:'%C(yel
 
 ## pull
 alias gl='git  pull'
-alias glu='git pull origin $(gpbb)'
 
 ## push
 alias gp='git push'
 alias gp!='git push -f'
+alias gppr='git push && gpr'
 
 ## branch shortcuts
 alias gip=git_primary_branch
@@ -106,9 +106,8 @@ alias gre=git-recent-refs
 alias gah=git_annotated_history
 
 ## Hub aliases
-alias gpr='git pull-request'
-alias gppr='git push && gh pr create'
 alias gw='git browse'
+alias gpr='gh pr create'
 
 gdv () {
     git diff -w "$@" | view -
@@ -180,7 +179,7 @@ git_annotated_history () {
     if ! [ "$files" ]
     then
         files="$(
-            find . -mindepth 1 -maxdepth 1 \
+            find -s . -mindepth 1 -maxdepth 1 \
                 -not \( -wholename '*.git*' -type d \)
         )"
     fi
@@ -190,7 +189,7 @@ git_annotated_history () {
         filename="${filename/.\/}"
         if [ "${#filename}" -gt "$filename_width" ]
         then
-            filename_width="${#filename}"
+            filename_width="$((${#filename}+1))"
         fi
     done <<<$files
 
@@ -200,7 +199,12 @@ git_annotated_history () {
         info="$(git log -n 1 --relative-date --pretty=reference "$filename")"
         if ! [ $info ]
         then
-            info='Untracked'
+            if grep $filename .gitignore 2>&1 >/dev/null
+            then
+                info='Ignored'
+            else
+                info='Untracked'
+            fi
         fi
         printf "%-$((filename_width))s%s\n" "$filename" "$info"
     done <<<$files
