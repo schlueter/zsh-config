@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # Misc
 alias edot='dot -Tpng | feh --scale-down -'
 alias .z='TASKS=1 . "${ZDOTDIR}"/.zshrc'
@@ -11,28 +12,19 @@ alias ussh='try_ssh_forever'
 alias vim='nvim'
 
 # From files
-for f in "$ZDOTDIR"/aliases/*
-do
-    . "$f"
-done
+for f in "$ZDOTDIR"/aliases/*; do . "$f"; done
 
-if [ -d "$XDG_CONFIG_HOME/shell_aliases" ]
-then
-    for f in "$XDG_CONFIG_HOME"/shell_aliases/*
-    do
-        . "$f"
-    done
-fi
+[ -d "$XDG_CONFIG_HOME/shell_aliases" ] && \
+    for f in "$XDG_CONFIG_HOME"/shell_aliases/*; do . "$f"; done
 
 try_ssh_forever () {
-    until ssh $@
-    do
-        printf '\33[2K\33[A'
-    done
+    until ssh $@; do printf '\33[2K\33[A'; done
 }
 
 
 use-gnu-tools () {
+    path=(
+
     export PATH="/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH"
 }
 
