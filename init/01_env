@@ -16,6 +16,7 @@ XDG_DATA_HOME="$HOME/.local/share"
 ANSIBLE_CONFIG=$XDG_CONFIG_HOME/ansible.cfg
 CLASSPATH="$HOME/workspace/libs"
 EDITOR='vim'
+FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 GOPATH="$HOME/go"
 LANG='en_US.UTF-8'
 LESS='-g -i -M -R -w -z-4 -F -X'
@@ -31,6 +32,7 @@ RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 TMPPREFIX="$TMPDIR/zsh"
 VAGRANT_HOME="$XDG_CONFIG_HOME/.vagrant.d"
 VISUAL="$EDITOR"
+WINEPREFIX="$XDG_CONFIG_HOME/wine"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 Z_DIR="$XDG_CONFIG_HOME/z"
 
@@ -58,6 +60,7 @@ export \
     BROWSER \
     CLASSPATH \
     EDITOR \
+    FREETYPE_PROPERTIES \
     GOPATH \
     LANG \
     LESS \
@@ -71,6 +74,7 @@ export \
     TMPPREFIX \
     VAGRANT_HOME \
     VISUAL \
+    WINEPREFIX \
     XDG_CONFIG_HOME \
     XDG_DATA_HOME \
     ZDOTDIR \
