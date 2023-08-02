@@ -1,0 +1,63 @@
+initialize_pyenv () { [ $commands[pyenv] ] && eval "$( command pyenv init - )" }
+initialize_rbenv () { [ $commands[rbenv] ] && eval "$( command rbenv init - )" }
+initialize_kitty () { kitty + complete setup zsh | source /dev/stdin }
+initialize_z () { [ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh" }
+initialize_nvm () {
+    # depending on configuration outside this repo, npm may need secrets available
+    [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+}
+initialize_stack () {
+    [ $commands[stack] ] && {
+        eval "$(stack --bash-completion-script stack)"
+    }
+}
+initialize_helm () {
+    [ $commands[helm] ] && {
+        eval "$(helm completion zsh)"
+    }
+}
+initialize_kubectl () {
+    [ $commands[kubectl] ] && {
+        eval "$(kubectl completion zsh)"
+    }
+}
+initialize_ssh_agent () {
+    if [ ! "$SSH_AUTH_SOCK" ]
+    then
+        export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+        if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
+        then
+            rm -f $SSH_AUTH_SOCK
+            eval "$(ssh-agent -a "$SSH_AUTH_SOCK")"
+        fi
+    fi
+}
+
+i_options () {
+    declare -a init_options
+    [ $commands[helm] ] && init_options+=helm
+    [ $commands[kitty] ] && init_options+=kitty
+    [ $commands[kubectl] ] && init_options+=kubectl
+    [ -e "$NVM_DIR/nvm.sh" ] && init_options+=nvm
+    [ $commands[pyenv] ] && init_options+=pyenv
+    [ $commands[rbenv] ] && init_options+=rbenv
+    [ $commands[stack] ] && init_options+=stack
+    _values -s ' ' 'Options' ${init_options[@]}
+}
+
+i () {
+    for target in $*
+    do
+        if initialize_$target
+        then
+            printf '\x1b[38;5;46mSuccessfully initialized %s\n' "$target"
+        else
+            printf '\x1b[38;5;160mFailed initialization of %s\n' "$target"
+        fi
+    done
+}
+
+compdef i_options i
+
+initialize_z
+initialize_ssh_agent
