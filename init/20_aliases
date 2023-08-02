@@ -85,3 +85,4 @@ signit () {
         touch -t "$target_dts" "$file.sig"
 	fi
 }
+alias bu='brew update && brew upgrade'

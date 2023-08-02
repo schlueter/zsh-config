@@ -45,6 +45,7 @@ path=(
     $HOME/.cargo/bin
     $PYENV_ROOT/bin
     $RBENV_ROOT/bin
+    $HOME/.serverless/bin
     /usr/local/sbin
     $path
 )
