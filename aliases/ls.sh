@@ -5,5 +5,5 @@ alias la='ls -a'
 if command -v lsd >/dev/null
 then
     alias ls=lsd
-    alias lst='lsd --tree'
+    alias lst='ls --tree -a -I .git'
 fi
