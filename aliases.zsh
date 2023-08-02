@@ -7,8 +7,9 @@ alias fuck='sudo $(fc -ln -1)'
 alias ish='ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
 alias sshr='ssh-keygen -R'
 alias sshe='ssh -O exit'
-alias ussh=try_ssh_forever
-alias s=surf-manager
+alias ussh='try_ssh_forever'
+alias s='surf-manager'
+alias vim='nvim'
 
 # From files
 for f in "$ZDOTDIR"/aliases/*
