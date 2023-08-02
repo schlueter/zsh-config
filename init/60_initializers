@@ -23,7 +23,7 @@ initialize_kubectl () {
     }
 }
 initialize_ssh_agent () {
-    if [ ! "$SSH_AUTH_SOCK" ]
+    if which ssh-agent >/dev/null && [ ! "$SSH_AUTH_SOCK" ]
     then
         export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
         if ! pgrep ssh-agent >/dev/null || ! [ -e "$SSH_AUTH_SOCK" ]
