@@ -124,25 +124,11 @@ git_primary_branch () {
 }
 
 git_primary_branch_base () {
-    local ref
-    ref=$(git rev-parse --symbolic-full-name origin)
-    if [[ $? != 0 ]]
-    then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo ${ref#refs/remotes/origin/}
+    git remote show origin | awk '/.?.?HEAD branch:/{print $NF}'
 }
 
 git_current_branch () {
-    local ref
-    ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
-    if [[ $? != 0 ]]
-    then
-        [[ $ret == 128 ]] && return  # no git repo.
-        ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-    fi
-    echo "${ref#refs/heads/}"
+    git rev-parse --abbrev-ref HEAD
 }
 
 git_cherry_pick_file () {
