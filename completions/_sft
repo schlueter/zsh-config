@@ -1,0 +1,16 @@
+#compdef sft
+#autoload
+
+_sft() {
+    _arguments 'ssh+[Servers]:Servers:->servers'
+    case "$state" in
+        (servers) _servers ;;
+    esac
+}
+
+_servers() {
+    local IFS=$'\n'
+    _values 'Servers' $(sft list-servers | cut -f1)
+}
+
+_sft
