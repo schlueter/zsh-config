@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 initialize_pyenv () { [ $commands[pyenv] ] && eval "$( command pyenv init - )" }
 initialize_rbenv () { [ $commands[rbenv] ] && eval "$( command rbenv init - )" }
 initialize_kitty () { kitty + complete setup zsh | source /dev/stdin }

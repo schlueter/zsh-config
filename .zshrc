@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
 
-###############################################################################
-# The profile_startup functionality is only useful for profiling and debugging.
-###############################################################################
 profile_startup="$(if [ -f "$HOME"/profile-startup ]; then echo "yes"; else echo "no"; fi)"
 
 if [ "$profile_startup" = yes ]
