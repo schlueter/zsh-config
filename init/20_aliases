@@ -21,11 +21,23 @@ try_ssh_forever () {
     until ssh $@; do printf '\33[2K\33[A'; done
 }
 
+add-brew-bin-to-path () {
+    paths=(/usr/local/Cellar/"$1"/*)
+    if [ "${#paths}" -eq 1 ]
+    then
+        path=("${paths[1]}/libexec/gnubin" $path)
+    elif [ "${#paths}" -gt 1 ]
+    then
+        path=("${paths[1]}/libexec/gnubin" $path)
+    else
+        echo "No $1 found in Cellar." >&2
+    fi
+    export path
+}
 
 use-gnu-tools () {
-    path=(
-
-    export PATH="/usr/local/Cellar/gnu-sed/4.2.2/libexec/gnubin:/usr/local/Cellar/coreutils/8.25/libexec/gnubin/:$PATH"
+    add-brew-bin-to-path 'gnu-sed'
+    add-brew-bin-to-path 'coreutils'
 }
 
 realpath () {
