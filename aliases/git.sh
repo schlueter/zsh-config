@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 ## remote
-alias gRl='git remote -v'
+alias gRl='git   remote -v'
 
 ## add
-alias ga='git add'
-alias gap='git add -p'
+alias ga='git    add'
+alias gap='git   add -p'
 
 ## branch
 alias gb='git    branch'
@@ -16,11 +16,12 @@ alias gdl=git_delete_branch_local_and_origin
 alias gdl!=git_force_delete_branch_local_and_origin
 
 ## checkout
-alias gco='git  checkout'
-alias gcb='git  checkout -b'
-alias gch='git  checkout HEAD'
-alias gcm='gco $(git_primary_branch_base)'
-alias gcml='gcm && git pull'
+alias gco='git   checkout'
+alias gcb='git   checkout -b'
+alias gch='git   checkout HEAD'
+alias gcm='git   checkout $(git_primary_branch_base)'
+alias gcml='git  checkout $(git_primary_branch_base) \
+    && git pull'
 alias gcul='git checkout master && git pull upstream master'
 alias gcol=git_checkout_and_pull
 alias gcop=git_checkout_pull_request
