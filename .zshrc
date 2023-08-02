@@ -44,7 +44,6 @@ then
     then
         rm -f $SSH_AUTH_SOCK
         eval "$(ssh-agent -a "$SSH_AUTH_SOCK")"
-        ssh-add
     fi
 fi
 
