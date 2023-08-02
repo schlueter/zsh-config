@@ -110,18 +110,6 @@ alias gpr='git pull-request'
 alias gppr='git push && git pull-request'
 alias gw='git browse'
 
-#!!! An alias doesn't work, use the function instead !!!
-git () {
-    # Don't break git if hub isn't installed yet
-    if which hub >/dev/null 2>&1
-    then
-        hub $@
-    else
-        unset -f git
-        git $@
-    fi
-}
-
 gdv () {
     git diff -w "$@" | view -
 }
