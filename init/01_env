@@ -15,7 +15,7 @@ XDG_DATA_HOME="$HOME/.local/share"
 
 ANSIBLE_CONFIG=$XDG_CONFIG_HOME/ansible.cfg
 CLASSPATH="$HOME/workspace/libs"
-EDITOR='vim'
+EDITOR='nvim'
 FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 GOPATH="$HOME/go"
 LANG='en_US.UTF-8'
@@ -28,6 +28,7 @@ PACKER_HOME_DIR="$XDG_CONFIG_HOME/packer"
 PAGER='less'
 PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
 PYTHONSTARTUP=~/.pythonrc
+RANCHER_ROOT="$HOME/.rd"
 RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
 TMPPREFIX="$TMPDIR/zsh"
 VAGRANT_HOME="$XDG_CONFIG_HOME/.vagrant.d"
@@ -44,6 +45,7 @@ path=(
     $HOME/.tfenv/bin
     $HOME/.cargo/bin
     $PYENV_ROOT/bin
+    $RANCHER_ROOT/bin
     $RBENV_ROOT/bin
     $HOME/.serverless/bin
     /usr/local/sbin
