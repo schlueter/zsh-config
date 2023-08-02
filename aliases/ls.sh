@@ -5,4 +5,5 @@ if which lsd >/dev/null
 then
     alias ls=lsd
     alias lst='lsd --tree'
+    alias tree='lsd --tree'
 fi
