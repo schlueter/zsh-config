@@ -32,9 +32,9 @@ alias gcpf=git_cherry_pick_file
 
 ## commit
 alias gc='git   commit --gpg-sign --verbose'
-alias gc!='gc   --amend'
-alias gca='gc   --all'
-alias gca!='gc! --all'
+alias gc!='git  commit --gpg-sign --verbose --amend'
+alias gca='git  commit --gpg-sign --verbose --all'
+alias gca!='git commit --gpg-sign --verbose --all --amend'
 
 ## clone
 alias gcl='git clone --recursive'
@@ -79,12 +79,12 @@ alias gib=git_current_branch
 alias gipb=git_primary_branch_base
 
 ## rebase
-alias grb='git               rebase'
+alias grb='git               rebase -S'
 alias grba='git              rebase --abort'
 alias grbc='git              rebase --continue'
-alias grbi='git              rebase --interactive'
+alias grbi='git              rebase -S --interactive'
 alias grbs='git              rebase --skip'
-alias grbu='git fetch && git rebase origin/$(git_primary_branch_base)'
+alias grbu='git fetch && git rebase -S origin/$(git_primary_branch_base)'
 
 ## reset
 alias grh='git  reset HEAD'

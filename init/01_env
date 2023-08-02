@@ -45,16 +45,13 @@ Z_DIR="$XDG_CONFIG_HOME/z"
 path=(
     $HOME/bin
     $HOME/.local/bin
-    /usr/local/opt/php@7.4/sbin
-    /usr/local/opt/php@7.4/bin
     $HOME/go/bin
-    $PYENV_ROOT/shims
+    $PYENV_ROOT/bin
+    $RBENV_ROOT/bin
     $HOME/.tfenv/bin
     $HOME/.cargo/bin
-    $PYENV_ROOT/bin
     $RANCHER_ROOT/bin
-    $RBENV_ROOT/bin
-    $HOME/.serverless/bin
+    /usr/local/bin
     /usr/local/sbin
     $path
 )
