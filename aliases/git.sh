@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 ## remote
 alias gRl='git remote -v'
 
@@ -158,38 +159,38 @@ git_current_branch () {
 }
 
 git_cherry_pick_file () {
-    git cherry-pick -n $1
+    git cherry-pick -n "$1"
     git reset HEAD
-    git add $2
+    git add "$2"
     git checkout $(git rev-parse --show-toplevel)
 }
 
 git_checkout_and_pull () {
-    git checkout $1
+    git checkout "$1"
     git pull
 }
 
 git_checkout_pull_request () {
-    [[ -z "$3" ]] && remote=upstream || remote=$3
-    [[ -z "$2" ]] && branch=PR$1 || branch=$2
-    git fetch $remote pull/$1/head:$branch
-    git checkout $branch
+    [ -z "$3" ] && remote=upstream || remote="$3"
+    [ -z "$2" ] && branch=PR"$1" || branch="$2"
+    git fetch "$remote" "pull/$1/head:$branch"
+    git checkout "$branch"u
 }
 
 git_delete_branch_local_and_origin () {
-    git branch --delete $1 $2
-    git push origin :$1
+    git branch --delete "$1" "$2"
+    git push origin :"$1"
 }
 
 git_force_delete_branch_local_and_origin () {
-    git branch --delete --force $1
-    git push origin :$1
+    git branch --delete --force "$1"
+    git push origin :"$1"
 }
 
 git_annotated_history () {
     files_in_current_directory="$(find . -mindepth 1 -maxdepth 1 -not \( -wholename '*.git*' -type d \))"
     filename_width=0
-    export FS='\n'
+    FS=$'\n'
     while read -r filename
     do
         echo "considering length of $filename"
