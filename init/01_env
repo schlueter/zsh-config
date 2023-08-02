@@ -31,6 +31,7 @@ ANSIBLE_CONFIG=$XDG_CONFIG_HOME/ansible.cfg
 CLASSPATH="$HOME/workspace/libs"
 GOPATH="$HOME/go"
 N_PREFIX="$HOME/.local"
+NVM_DIR="$XDG_CONFIG_HOME/nvm"
 PACKER_CACHE_DIR="$XDG_DATA_HOME/packer_cache"
 PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer/config"
 PACKER_HOME_DIR="$XDG_CONFIG_HOME/packer"
@@ -74,6 +75,7 @@ export \
     LESS \
     LESSOPEN \
     N_PREFIX \
+    NVM_DIR \
     PAGER \
     PYENV_ROOT \
     PYTHONSTARTUP \

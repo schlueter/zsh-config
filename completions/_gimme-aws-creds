@@ -1,4 +1,4 @@
-#compdef gimme-aws-creds
+#compdef gimme-aws-creds gac
 #autoload
 
 _gimme-aws-creds() {
