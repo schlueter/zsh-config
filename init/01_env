@@ -80,3 +80,5 @@ export \
     ZDOTDIR \
     Z_DIR \
     path \
+
+eval "$(pyenv init --path)"
