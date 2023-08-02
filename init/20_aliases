@@ -10,6 +10,7 @@ alias sshr='ssh-keygen -R'
 alias sshe='ssh -O exit'
 alias ussh='try_ssh_forever'
 alias vim='nvim'
+alias vimdiff='nvim -d'
 
 # From files
 for f in "$ZDOTDIR"/aliases/*; do . "$f"; done

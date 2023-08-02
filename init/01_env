@@ -10,29 +10,34 @@ else
     BROWSER=firefox
 fi
 
+FREETYPE_PROPERTIES="truetype:interpreter-version=35"
+LANG='en_US.UTF-8'
+LESS='-g -i -M -R -w -z-4 -F -X'
+LESSOPEN='|lesspreprocess %s'
+PAGER='less'
+SHELL="$(which zsh)"
+TMPPREFIX="$TMPDIR/zsh"
+
+EDITOR='nvim'
+VISUAL="$EDITOR"
+
+PYTHONSTARTUP=~/.pythonrc
+HUSKY_SKIP_HOOKS='true'
+
 XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
 
 ANSIBLE_CONFIG=$XDG_CONFIG_HOME/ansible.cfg
 CLASSPATH="$HOME/workspace/libs"
-EDITOR='nvim'
-FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 GOPATH="$HOME/go"
-LANG='en_US.UTF-8'
-LESS='-g -i -M -R -w -z-4 -F -X'
-LESSOPEN='|lesspreprocess %s'
 N_PREFIX="$HOME/.local"
 PACKER_CACHE_DIR="$XDG_DATA_HOME/packer_cache"
 PACKER_CONFIG_DIR="$XDG_CONFIG_HOME/packer/config"
 PACKER_HOME_DIR="$XDG_CONFIG_HOME/packer"
-PAGER='less'
 PYENV_ROOT="$XDG_CONFIG_HOME/pyenv"
-PYTHONSTARTUP=~/.pythonrc
 RANCHER_ROOT="$HOME/.rd"
 RBENV_ROOT="$XDG_CONFIG_HOME/rbenv"
-TMPPREFIX="$TMPDIR/zsh"
 VAGRANT_HOME="$XDG_CONFIG_HOME/.vagrant.d"
-VISUAL="$EDITOR"
 WINEPREFIX="$XDG_CONFIG_HOME/wine"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 Z_DIR="$XDG_CONFIG_HOME/z"
@@ -40,6 +45,8 @@ Z_DIR="$XDG_CONFIG_HOME/z"
 path=(
     $HOME/bin
     $HOME/.local/bin
+    /usr/local/opt/php@7.4/sbin
+    /usr/local/opt/php@7.4/bin
     $HOME/go/bin
     $PYENV_ROOT/shims
     $HOME/.tfenv/bin

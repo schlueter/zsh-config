@@ -46,11 +46,14 @@ alias gcf='git config --list'
 alias gclean='git clean -fd'
 alias gpristine='git reset --hard && git clean -dfx'
 ## diff
-alias gd='git   diff'
-alias gds='git  diff --stat'
-alias gdc='git  diff --cached'
-alias gdcs='git diff --cached --stat'
-alias gdu='git  diff $(git_primary_branch)'
+alias    gd='git diff'
+alias   gds='git diff --stat'
+alias   gdc='git diff --cached'
+alias  gdcs='git diff --cached --stat'
+alias   gdu='git diff $(git_primary_branch)'
+alias  gdus='git diff $(git_primary_branch) --stat'
+alias  gduc='git diff $(git_primary_branch) --cached'
+alias gducs='git diff $(git_primary_branch) --cached --stat'
 
 ## diff-tree
 alias gdt='git  diff-tree --no-commit-id --name-only -r'
@@ -105,6 +108,8 @@ alias gtt='git stash save --include-untracked'
 ## misc
 alias gre=git-recent-refs
 alias gah=git_annotated_history
+alias grc=git_recent_changes
+alias groot='git rev-parse --show-toplevel'
 
 ## Hub aliases
 alias gw='git browse'
@@ -159,4 +164,8 @@ git_delete_branch_local_and_origin () {
 git_force_delete_branch_local_and_origin () {
     git branch --delete --force "$1"
     git push origin :"$1"
+}
+
+git_recent_changes () {
+    git show --pretty=format:'%H %ai %an %s %d' $(git for-each-ref --sort=-committerdate refs | head -"${1:-10}" | cut -d' ' -f1) | awk '/^[a-z0-9]{40} /'
 }

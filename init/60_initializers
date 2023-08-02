@@ -67,4 +67,5 @@ compdef i_options i
 
 initialize_z
 initialize_pyenv
+initialize_rbenv
 initialize_ssh_agent
