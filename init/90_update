@@ -1,8 +1,15 @@
 #!/usr/bin/env zsh
 
 (
+    case "$(uname -s)" in
+        Darwin)
+            uptime="$(sysctl -n kern.boottime | sed -En 's/.* sec = ([0-9]+),.*/\1/p')"
+        ;;
+        *)  uptime="$(date -d "$(uptime -s)" +%s)"
+        ;;
+    esac
     # Skip update if the system has been up less than 300 seconds
-    [ "$(($(date -d "$(uptime -s)" +%s)+300))" -gt "$(date +%s)" ] && exit
+    [ $(( uptime + 300 )) -gt $(date +%s) ] && exit
     # Skip update if the zsh config has been updated in last day
     find ~/run/zsh_update -mmin +$((24 * 60 * 60)) >/dev/null 2>&1 || exit
     cd "$ZDOTDIR" || (
