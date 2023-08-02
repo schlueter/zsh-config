@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+(
+    # Skip update if the system has been up less than 300 seconds
+    [ "$(($(date -d "$(uptime -s)" +%s)+300))" -gt "$(date +%s)" ] && exit
+    # Skip update if the zsh config has been updated in last day
+    find ~/run/zsh_update -mmin +$((24 * 60 * 60)) >/dev/null 2>&1 || exit
+    cd "$ZDOTDIR" || (
+        printf $'\x1b[38;5;202mError encountered cd\'ing to zsh config dir\n'; exit
+    ); exit
+    # Skip update if the zsh config repo is dirty
+    git diff --exit-code >/dev/null || (
+        printf '\x1b[38;5;202mzsh config is dirty\n'; exit
+    ); exit
+    if git pull >/dev/null 2>&1
+    then
+        printf '\x1b[38;5;46mSuccessfully pulled update to zsh config\n'; exit
+    else
+        printf '\x1b[38;5;160mFailed to pull update to zsh config\n'; exit
+    fi
+    mkdir ~/run && touch ~/run/zsh_update
+) &!
+
