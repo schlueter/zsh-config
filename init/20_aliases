@@ -73,3 +73,15 @@ used_git_aliases () {
 }
 
 alias | grep gpa &>/dev/null && unalias gpa
+
+signit () {
+    file="$1"
+	if [[ -z "$file" ]]
+	then
+		echo "Provide a filename and try again."
+	else
+		target_dts=$(date -d "$(stat -c %Y $file | awk '{print strftime("%c",$1)}')" +%Y%m%d%H%M.%S)
+        gpg --detach-sign "$file"
+        touch -t "$target_dts" "$file.sig"
+	fi
+}

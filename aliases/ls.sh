@@ -1,9 +1,9 @@
+#!/usr/bin/env zsh
 alias l='ls -l'
 alias la='ls -a'
 
-if which lsd >/dev/null
+if command -v lsd >/dev/null
 then
     alias ls=lsd
     alias lst='lsd --tree'
-    alias tree='lsd --tree'
 fi

@@ -1,12 +1,5 @@
 #!/usr/bin/env zsh
 
-if [ ! -d "$TMPDIR" ]
-then
-    TMPDIR="/tmp/$LOGNAME"
-    mkdir -p "$TMPDIR"
-    chmod 700 "$TMPDIR"
-fi
-
 if command -v surf >/dev/null
 then
     BROWSER=surf
@@ -51,6 +44,13 @@ path=(
     /usr/local/sbin
     $path
 )
+
+if [ ! -d "$TMPDIR" ]
+then
+    TMPDIR="$XDG_DATA_HOME/tmp"
+    mkdir -p "$TMPDIR"
+    chmod 700 "$TMPDIR"
+fi
 
 export \
     ANSIBLE_CALLBACK_WHITELIST \
