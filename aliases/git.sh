@@ -159,39 +159,3 @@ git_force_delete_branch_local_and_origin () {
     git branch --delete --force "$1"
     git push origin :"$1"
 }
-
-git_annotated_history () {
-    files="$1"
-    if ! [ "$files" ]
-    then
-        files="$(
-            find -s . -mindepth 1 -maxdepth 1 \
-                -not \( -wholename '*.git*' -type d \)
-        )"
-    fi
-    filename_width=0
-    while read -r filename
-    do
-        filename="${filename/.\/}"
-        if [ "${#filename}" -gt "$filename_width" ]
-        then
-            filename_width="$((${#filename}+1))"
-        fi
-    done <<<$files
-
-    while read -r filename
-    do
-        filename="${filename/.\/}"
-        info="$(git log -n 1 --relative-date --pretty=reference "$filename")"
-        if ! [ $info ]
-        then
-            if grep $filename .gitignore 2>&1 >/dev/null
-            then
-                info='Ignored'
-            else
-                info='Untracked'
-            fi
-        fi
-        printf "%-$((filename_width))s%s\n" "$filename" "$info"
-    done <<<$files
-}
