@@ -13,7 +13,6 @@ then
     PS4='+$EPOCHREALTIME %N:%i> '
 
     logfile=$(mktemp --tmpdir zsh_profile.XXXXXXXX)
-    echo "Logging to $logfile"
     exec 3>&2 2>!$logfile
 
     setopt XTRACE
@@ -58,8 +57,31 @@ load_secrets
 # depending on configuration outside this repo, npm may need secrets available
 [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
 
+(
+    # Skip update if the system has been up less than 300 seconds
+    [ "$(($(date -d "$(uptime -s)" +%s)+300))" -gt "$(date +%s)" ] && exit
+    # Skip update if the zsh config has been updated in last day
+    find ~/run/zsh_update -mmin +$((24 * 60 * 60)) >/dev/null 2>&1 || exit
+    cd "$(dirname $0)" || (
+        printf $'\x1b[38;5;202mError encountered cd\'ing to zsh config dir\n'; exit
+    ); exit
+    # Skip update if the zsh config repo is dirty
+    git diff --exit-code >/dev/null || (
+        printf '\x1b[38;5;202mzsh config is dirty\n'; exit
+    ); exit
+    if git pull >/dev/null 2>&1
+    then
+        printf '\x1b[38;5;46mSuccessfully pulled update to zsh config\n'; exit
+    else
+        printf '\x1b[38;5;160mFailed to pull update to zsh config\n'; exit
+    fi
+    mkdir ~/run && touch ~/run/zsh_update
+) &!
+
 if [ "$profile_startup" = yes ]
 then
     unsetopt XTRACE
     exec 2>&3 3>&-
+    printf '\x1b[38;5;90mProfile logged to %s\n' "$logfile"
+
 fi
