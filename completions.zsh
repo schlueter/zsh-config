@@ -11,8 +11,3 @@ bashcompinit
 [ $commands[kubectl] ] && {
     eval "$(kubectl completion zsh)"
 }
-
-for f in "$ZDOTDIR"/completions/{_*,*.bash}
-do
-    source "$f" 2>/dev/null
-done
