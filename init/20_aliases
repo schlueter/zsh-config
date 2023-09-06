@@ -52,14 +52,6 @@ colors () {
     done
 }
 
-git_recent_branches () {
-    git reflog \
-    | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1\
-\2/p' \
-    | head "-${1:-100}" \
-    | sort -u
-}
-
 agent () {
     eval `ssh-agent -s`
     ssh-add

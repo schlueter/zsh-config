@@ -21,7 +21,7 @@ alias gcb='git   checkout -b'
 alias gch='git   checkout HEAD'
 alias gcm='git   checkout $(git_primary_branch_base)'
 alias gcml='git  checkout $(git_primary_branch_base) \
-    && git pull'
+    && git pull --prune'
 alias gcul='git checkout master && git pull upstream master'
 alias gcol=git_checkout_and_pull
 alias gcop=git_checkout_pull_request
@@ -46,27 +46,26 @@ alias gcf='git config --list'
 alias gclean='git clean -fd'
 alias gpristine='git reset --hard && git clean -dfx'
 ## diff
-alias    gd='git diff'
-alias   gds='git diff --stat'
-alias   gdc='git diff --cached'
-alias  gdcs='git diff --cached --stat'
-alias   gdu='git diff $(git_primary_branch)'
-alias  gdus='git diff $(git_primary_branch) --stat'
-alias  gduc='git diff $(git_primary_branch) --cached'
+alias gd='   git diff'
+alias gds='  git diff --stat'
+alias gdc='  git diff --cached'
+alias gdcs=' git diff --cached --stat'
+alias gdu='  git diff $(git_primary_branch)'
+alias gdus=' git diff $(git_primary_branch) --stat'
+alias gduc=' git diff $(git_primary_branch) --cached'
 alias gducs='git diff $(git_primary_branch) --cached --stat'
 
 ## diff-tree
 alias gdt='git  diff-tree --no-commit-id --name-only -r'
 
 ## fetch
-alias gf='git  fetch'
-alias gfa='git fetch --all --prune'
+alias gf='git  fetch --all --prune'
 
 ## log
 alias ghi="git log --graph --decorate=short --date=short --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)'"
 
 ## pull
-alias gl='git  pull'
+alias gl='git  pull --prune'
 
 ## push
 alias gp='git push'
@@ -146,7 +145,7 @@ git_cherry_pick_file () {
 
 git_checkout_and_pull () {
     git checkout "$1"
-    git pull
+    git pull --prune
 }
 
 git_checkout_pull_request () {
@@ -169,3 +168,13 @@ git_force_delete_branch_local_and_origin () {
 git_recent_changes () {
     git show --pretty=format:'%H %ai %an %s %d' $(git for-each-ref --sort=-committerdate refs | head -"${1:-10}" | cut -d' ' -f1) | awk '/^[a-z0-9]{40} /'
 }
+
+git_recent_branches () {
+    git reflog \
+    | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1\
+\2/p' \
+    | head "-${1:-100}" \
+    | sort -u
+}
+
+
