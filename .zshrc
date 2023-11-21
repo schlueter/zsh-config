@@ -9,7 +9,7 @@ then
     setopt PROMPT_SUBST
     PS4='+$EPOCHREALTIME %N:%i> '
 
-    logfile=$(mktemp --tmpdir zsh_profile.XXXXXXXX)
+    logfile=$(mktemp)
     exec 3>&2 2>!$logfile
 
     setopt XTRACE
