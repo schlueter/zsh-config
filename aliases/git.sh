@@ -46,13 +46,13 @@ alias gcf='git config --list'
 alias gclean='git clean -fd'
 alias gpristine='git reset --hard && git clean -dfx'
 ## diff
-alias gd='   git diff'
-alias gds='  git diff --stat'
-alias gdc='  git diff --cached'
-alias gdcs=' git diff --cached --stat'
-alias gdu='  git diff $(git_primary_branch)'
-alias gdus=' git diff $(git_primary_branch) --stat'
-alias gduc=' git diff $(git_primary_branch) --cached'
+alias gd='git diff'
+alias gds='git diff --stat'
+alias gdc='git diff --cached'
+alias gdcs='git diff --cached --stat'
+alias gdu='git diff $(git_primary_branch)'
+alias gdus='git diff $(git_primary_branch) --stat'
+alias gduc='git diff $(git_primary_branch) --cached'
 alias gducs='git diff $(git_primary_branch) --cached --stat'
 
 ## diff-tree
@@ -166,10 +166,16 @@ git_force_delete_branch_local_and_origin () {
 }
 
 git_recent_changes () {
-    git show --pretty=format:'%H %ai %an %s %d' $(git for-each-ref --sort=-committerdate refs | head -"${1:-10}" | cut -d' ' -f1) | awk '/^[a-z0-9]{40} /'
+    git show --pretty=format:'%H %ai %an %s %d' $(
+        git for-each-ref --sort=-committerdate refs \
+          | head -"${1:-10}" \
+          | cut -d' ' -f1
+    ) | awk '/^[a-z0-9]{40} /'
 }
 
 git_recent_branches () {
+    # Newlines matter here, this command pipeline will look strange as long as
+    # sed is used.
     git reflog \
     | sed -En 's/.*moving from ([^ ]*) to ([^$]*)/\1\
 \2/p' \
