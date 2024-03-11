@@ -2,10 +2,4 @@ autoload -Uz compinit && compinit
 autoload -U +X bashcompinit
 bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
-if [ $commands[npm] ]
-then
-  source <(npm completion)
-elif [ -n "${ZSH_INIT_DEBUG}" ]
-then
-  echo 'npm is not installed' >&2
-fi
+[ $commands[npm] ] && source <(npm completion)
