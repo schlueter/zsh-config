@@ -1,17 +1,17 @@
 #!/usr/bin/env zsh
 ## remote
-alias gRl='git   remote -v'
+alias gRl='git   remote --verbose'
 
 ## add
 alias ga='git    add'
-alias gap='git   add -p'
+alias gap='git   add --patch'
 
 ## branch
 alias gb='git    branch'
 alias gsupo='git branch --set-upstream-to'
 alias gsup='git  branch --set-upstream-to=origin/$(git_current_branch)'
-alias gbr='git   branch -r --no-merged'
-alias gbm='git   branch -r --merged'
+alias gbr='git   branch --remotes --no-merged'
+alias gbm='git   branch --remotes --merged'
 alias gdl=git_delete_branch_local_and_origin
 alias gdl!=git_force_delete_branch_local_and_origin
 
@@ -20,14 +20,12 @@ alias gco='git   checkout'
 alias gcb='git   checkout -b'
 alias gch='git   checkout HEAD'
 alias gcm='git   checkout $(git_primary_branch_base)'
-alias gcml='git  checkout $(git_primary_branch_base) \
-    && git pull --prune'
-alias gcul='git checkout master && git pull upstream master'
+alias gcml='git  checkout $(git_primary_branch_base) && git pull --prune'
 alias gcol=git_checkout_and_pull
 alias gcop=git_checkout_pull_request
 
 ## cherry-pick
-alias gcp='git cherry-pick'
+alias gcp='git cherry-pick --signoff --gpg-sign'
 alias gcpf=git_cherry_pick_file
 
 ## commit
@@ -43,8 +41,8 @@ alias gcl='git clone --recursive'
 alias gcf='git config --list'
 
 ## clean
-alias gclean='git clean -fd'
-alias gpristine='git reset --hard && git clean -dfx'
+alias gclean='git clean -d --force'
+alias gpristine='git reset --hard && git clean -dx --force'
 ## diff
 alias gd='git diff'
 alias gds='git diff --stat'
@@ -63,13 +61,14 @@ alias gf='git  fetch --all --prune'
 
 ## log
 alias ghi="git log --graph --decorate=short --date=short --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%an%C(reset) %s %C(red)%d%C(reset)'"
+alias ghI="git log --graph --decorate=short --date=short --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %C(green)%aE%C(reset) %s %C(red)%d%C(reset)'"
 
 ## pull
 alias gl='git  pull --prune'
 
 ## push
 alias gp='git push'
-alias gp!='git push -f'
+alias gp!='git push --force'
 alias gppr='git push && gpr'
 
 ## branch shortcuts
@@ -78,12 +77,12 @@ alias gib=git_current_branch
 alias gipb=git_primary_branch_base
 
 ## rebase
-alias grb='git               rebase -S'
+alias grb='git               rebase --gpg-sign'
 alias grba='git              rebase --abort'
 alias grbc='git              rebase --continue'
-alias grbi='git              rebase -S --interactive'
+alias grbi='git              rebase --gpg-sign --interactive'
 alias grbs='git              rebase --skip'
-alias grbu='git fetch && git rebase -S origin/$(git_primary_branch_base)'
+alias grbu='git fetch && git rebase --gpg-sign origin/$(git_primary_branch_base)'
 
 ## reset
 alias grh='git  reset HEAD'
@@ -93,8 +92,8 @@ alias grhh='git reset HEAD --hard'
 alias grm='git rm'
 
 ## status
-alias gs='git  status -s'
-alias gsb='git status -sb'
+alias gs='git  status --short'
+alias gsb='git status --short --branch'
 alias gst='git status'
 
 ## stash
@@ -137,7 +136,7 @@ git_current_branch () {
 }
 
 git_cherry_pick_file () {
-    git cherry-pick -n "$1"
+    git cherry-pick --signoff --gpg-sign --no-commit "$1"
     git reset HEAD
     git add "$2"
     git checkout $(git rev-parse --show-toplevel)
