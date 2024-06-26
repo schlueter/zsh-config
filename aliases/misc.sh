@@ -44,3 +44,5 @@ opa () {
   else echo 'OKTA_PASS_NAME is unset' >&2
   fi
 }
+
+alias reload-gpg-agent='gpg-connect-agent reloadagent /bye'
