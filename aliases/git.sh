@@ -79,7 +79,7 @@ alias gipb=git_primary_branch_base
 ## rebase
 alias grb='git               rebase --gpg-sign --signoff'
 alias grba='git              rebase --abort'
-alias grbc='git              rebase --continue --gpg-sign --signoff'
+alias grbc='git              rebase --continue'
 alias grbi='git              rebase --gpg-sign --interactive --signoff'
 alias grbs='git              rebase --skip'
 
