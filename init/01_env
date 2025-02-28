@@ -10,6 +10,7 @@ else
     BROWSER=firefox
 fi
 
+GPG_TTY=$(tty)
 FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 LANG='en_US.UTF-8'
 LESS='-g -i -M -R -w -z-4 -F -X'
@@ -43,6 +44,29 @@ WINEPREFIX="$XDG_CONFIG_HOME/wine"
 ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 Z_DIR="$XDG_CONFIG_HOME/z"
 
+# TODO Clean up
+LIBRARY_PATH="$LIBRARY_PATH:/opt/homebrew/opt/openssl@3/lib"
+AWS_SDK_LOAD_CONFIG=true
+
+path=(
+    /usr/local/bin
+    /usr/local/sbin
+    $path
+)
+
+if [ "$(uname -s)" = Darwin ]
+then
+    path=(
+        /Applications/Postgres.app/Contents/Versions/14/bin
+        /opt/homebrew/opt/findutils/libexec/gnubin
+        /opt/homebrew/opt/gnu-sed/libexec/gnubin
+        /opt/homebrew/opt/openssl@3/bin
+        /opt/homebrew/bin
+        /opt/homebrew/sbin
+        $path
+    )
+fi
+
 path=(
     $HOME/bin
     $HOME/.local/bin
@@ -52,8 +76,6 @@ path=(
     $HOME/.tfenv/bin
     $HOME/.cargo/bin
     $RANCHER_ROOT/bin
-    /usr/local/bin
-    /usr/local/sbin
     $path
 )
 
@@ -90,3 +112,6 @@ export \
     ZDOTDIR \
     Z_DIR \
     path \
+    LIBRARY_PATH \
+    AWS_SDK_LOAD_CONFIG \
+    GPG_TTY \
