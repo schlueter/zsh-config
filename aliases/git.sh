@@ -96,7 +96,6 @@ alias gsb='git status --short --branch'
 alias gst='git status'
 
 ## stash
-alias gt='git  stash'
 alias gtd='git stash drop'
 alias gtp='git stash pop'
 alias gts='git stash show'
