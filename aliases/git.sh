@@ -33,6 +33,7 @@ alias gc='git   commit --gpg-sign --verbose'
 alias gc!='git  commit --gpg-sign --verbose --amend'
 alias gca='git  commit --gpg-sign --verbose --all'
 alias gca!='git commit --gpg-sign --verbose --all --amend'
+alias gcr='git  commit --gpg-sign --verbose --edit --file=.git/COMMIT_EDITMSG'
 
 ## clone
 alias gcl='git clone --recursive'
