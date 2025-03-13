@@ -86,7 +86,16 @@ alias grbs='git              rebase --skip'
 
 ## reset
 alias grh='git  reset HEAD'
-alias grhh='git reset HEAD --hard'
+grhh () {
+    read "?Are you sure? "
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+        git reset HEAD --hard
+    else
+        echo 'Aborted.'
+    fi
+}
 
 ## rm
 alias grm='git rm'
