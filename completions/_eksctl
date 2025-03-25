@@ -189,7 +189,7 @@ function _eksctl_create_cluster {
     '--appmesh-preview-access[enable full access to AppMesh Preview]' \
     '--asg-access[enable IAM policy for cluster-autoscaler]' \
     '--authenticator-role-arn[AWS IAM role to assume for authenticator]:' \
-    '--auto-kubeconfig[save kubeconfig file by cluster name, e.g. "/Users/bschlueter/.kube/eksctl/clusters/floral-hideout-1594079720"]' \
+    '--auto-kubeconfig[save kubeconfig file by cluster name, e.g. "~/.kube/eksctl/clusters/floral-hideout-1594079720"]' \
     '--cfn-role-arn[IAM role used by CloudFormation to call AWS API on your behalf]:' \
     '(-f --config-file)'{-f,--config-file}'[load configuration from a file (or stdin if set to '\''-'\'')]:' \
     '--external-dns-access[enable IAM policy for external-dns]' \
@@ -1226,7 +1226,7 @@ function _eksctl_utils_update-legacy-subnet-settings {
 function _eksctl_utils_write-kubeconfig {
   _arguments \
     '--authenticator-role-arn[AWS IAM role to assume for authenticator]:' \
-    '--auto-kubeconfig[save kubeconfig file by cluster name, e.g. "/Users/bschlueter/.kube/eksctl/clusters/<name>"]' \
+    '--auto-kubeconfig[save kubeconfig file by cluster name, e.g. "~/.kube/eksctl/clusters/<name>"]' \
     '(-c --cluster)'{-c,--cluster}'[EKS cluster name]:' \
     '--kubeconfig[path to write kubeconfig (incompatible with --auto-kubeconfig)]:' \
     '(-p --profile)'{-p,--profile}'[AWS credentials profile to use (overrides the AWS_PROFILE environment variable)]:' \
