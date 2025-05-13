@@ -32,8 +32,11 @@ alias gcpf=git_cherry_pick_file
 alias gc='git   commit --gpg-sign --verbose'
 alias gc!='git  commit --gpg-sign --verbose --amend'
 alias gca='git  commit --gpg-sign --verbose --all'
+alias gcan='git commit --gpg-sign --verbose --all --no-verify'
 alias gca!='git commit --gpg-sign --verbose --all --amend'
 alias gcr='git  commit --gpg-sign --verbose --edit --file=.git/COMMIT_EDITMSG'
+alias gcn='git  commit --gpg-sign --verbose --no-verify'
+alias gcn!='git commit --gpg-sign --verbose --no-verify --amend'
 
 ## clone
 alias gcl='git clone --recursive'
@@ -69,7 +72,7 @@ alias gl='git  pull --prune'
 
 ## push
 alias gp='git push'
-alias gp!='git push --force'
+alias gp!='git push --force-with-lease'
 alias gppr='git push && gpr'
 
 ## branch shortcuts
