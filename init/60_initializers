@@ -1,32 +1,13 @@
 #!/usr/bin/env zsh
-initialize_pyenv () {
-    [ $commands[pyenv] ] && {
-        eval "$( command pyenv init - )"
-        eval "$( command pyenv init --path)"
-    }
-}
+initialize_pyenv () { [ $commands[pyenv] ] && eval "$( command pyenv init - )" }
 initialize_rbenv () { [ $commands[rbenv] ] && eval "$( command rbenv init - )" }
 initialize_kitty () { [ $commands[kitty] ] && kitty + complete setup zsh | source /dev/stdin }
 initialize_z () { [ -e "$Z_DIR/z.sh" ] && source "$Z_DIR/z.sh" }
-initialize_nvm () {
-    # depending on configuration outside this repo, npm may need secrets available
-    [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-}
-initialize_stack () {
-    [ $commands[stack] ] && {
-        eval "$(stack --bash-completion-script stack)"
-    }
-}
-initialize_helm () {
-    [ $commands[helm] ] && {
-        eval "$(helm completion zsh)"
-    }
-}
-initialize_kubectl () {
-    [ $commands[kubectl] ] && {
-        eval "$(kubectl completion zsh)"
-    }
-}
+initialize_nvm () { [ -e "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" }
+initialize_stack () { [ $commands[stack] ] && eval "$(stack --bash-completion-script stack)" }
+initialize_helm () { [ $commands[helm] ] && eval "$(helm completion zsh)" }
+initialize_kubectl () { [ $commands[kubectl] ] && eval "$(kubectl completion zsh)" }
+
 initialize_ssh_agent () {
     if which ssh-agent >/dev/null && [ ! "$SSH_AUTH_SOCK" ]
     then
@@ -67,5 +48,4 @@ compdef i_options i
 
 initialize_z
 initialize_pyenv
-initialize_rbenv
 initialize_ssh_agent

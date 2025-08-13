@@ -30,6 +30,7 @@ XDG_DATA_HOME="$HOME/.local/share"
 
 ANSIBLE_CONFIG=$XDG_CONFIG_HOME/ansible.cfg
 CLASSPATH="$HOME/workspace/libs"
+GOROOT="/usr/local/go"
 GOPATH="$HOME/go"
 N_PREFIX="$HOME/.local"
 NVM_DIR="$XDG_CONFIG_HOME/nvm"
@@ -70,7 +71,7 @@ fi
 path=(
     $HOME/bin
     $HOME/.local/bin
-    $HOME/go/bin
+    $GOROOT/bin
     $PYENV_ROOT/bin
     $RBENV_ROOT/bin
     $HOME/.tfenv/bin
@@ -93,6 +94,7 @@ export \
     EDITOR \
     FREETYPE_PROPERTIES \
     GOPATH \
+    GOROOT \
     LANG \
     LESS \
     LESSOPEN \
