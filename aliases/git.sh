@@ -90,14 +90,46 @@ alias grbs='git              rebase --skip'
 ## reset
 alias grh='git  reset HEAD'
 grhh () {
-    read "?Are you sure? "
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]
+    git_status="$(git status --short)"
+    if [[ -z "$git_status" ]]
     then
-        git reset HEAD --hard
+        echo 'Nothing to reset.'
+        return 0
     else
-        echo 'Aborted.'
+        echo 'This will reset all changes in the working directory.'
     fi
+    read "?Are you sure? ([Yy] to proceed, [f] to see changed files, [p] to see changes, otherwise abort)"
+    echo
+    case $REPLY in
+        [Yy]*)
+            echo 'Resetting...'
+            git reset HEAD --hard
+            ;;
+        [Ff]*)
+            echo 'Changed files:'
+            git status --short
+            read "?Proceed with reset? ([Yy] to proceed, otherwise abort)"
+            if [[ $REPLY =~ ^[Yy]$ ]]
+            then
+                git reset HEAD --hard
+            else
+                echo 'Aborted.'
+            fi
+            ;;
+        [Pp]*)
+            echo 'Changes:'
+            git diff --cached
+            read "?Proceed with reset? ([Yy] to proceed, otherwise abort)"
+            if [[ $REPLY =~ ^[Yy]$ ]]
+            then
+                git reset HEAD --hard
+            else
+                echo 'Aborted.'
+            fi
+            ;;
+        *)
+            echo 'Aborted.'
+    esac
 }
 
 ## rm
