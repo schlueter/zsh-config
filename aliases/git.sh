@@ -225,4 +225,16 @@ git_recent_branches () {
     | sort -u
 }
 
-
+co () {
+    if [ $# -ge 1 ]; then
+        codeowners "$@"
+    else
+        codeowners $(
+            git diff --name-only $(
+                git merge-base origin/develop HEAD
+            )...HEAD
+        ) \
+        | sed -E 's/([^ ]*) +(.*)/\1 --- One of: \[\2\]/' \
+        | sort
+    fi
+}
