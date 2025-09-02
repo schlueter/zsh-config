@@ -229,12 +229,12 @@ co () {
     if [ $# -ge 1 ]; then
         codeowners "$@"
     else
-        codeowners $(
+        raw=$(codeowners $(
             git diff --name-only $(
                 git merge-base origin/develop HEAD
             )...HEAD
-        ) \
-        | sed -E 's/([^ ]*) +(.*)/\1 --- One of: \[\2\]/' \
+        ))
+        <<<$raw sed -E 's/([^ ]*) +(.*)/\1 --- One of: \[\2\]/' \
         | sort
     fi
 }

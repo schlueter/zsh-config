@@ -71,6 +71,7 @@ fi
 path=(
     $HOME/bin
     $HOME/.local/bin
+    $GOPATH/bin
     $GOROOT/bin
     $PYENV_ROOT/bin
     $RBENV_ROOT/bin
