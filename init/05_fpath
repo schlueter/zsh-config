@@ -17,5 +17,3 @@ fpath=(
   "$XDG_CONFIG_HOME/zsh/completions"
   $fpath
 )
-
-export fpath
