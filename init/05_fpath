@@ -1,15 +1,20 @@
 #!/usr/bin/env zsh
 if [ "$(uname -s)" = 'Darwin' ]
 then
+    brew_fpath=$(brew --prefix)/share/zsh-completions
+    if ! [[ -d $brew_fpath ]]
+    then
+        echo "Installing zsh-completions..."
+        brew install zsh-completions
+    fi
     fpath=(
-        $(brew --prefix)/share/zsh-completions
+        $brew_fpath
         $fpath
     )
 fi
 
 fpath=(
   "$XDG_CONFIG_HOME/zsh/completions"
-  "$XDG_CONFIG_HOME/zsh-completions"
   $fpath
 )
 
